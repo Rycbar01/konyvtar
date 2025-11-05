@@ -1,14 +1,23 @@
 /* src/App.css */
-
+* {
+    box-sizing: border-box;
+}
 /* 1. Általános Alapstílusok (body, fő konténer) */
-body {
+html, body {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #191919; /*  háttér */
     color: #333; /* Sötétszürke alap szöveg */
-    /*overflow: hidden;*/ /*ettől nem görgethető*/
+    overflow-x: hidden !important; /* Vízszintes görgetés tiltása */
+    overflow-y: auto;   /* Függőleges görgetés maradhat */
 }
+
+/* Csak a Home oldalon tiltsuk le a görgetést */
+.home-page {
+    height: 100vh;      /* Vegye fel a teljes képernyőt */
+    overflow: hidden;   /* Ne legyen görgetés */
+  }
 
 .App {
     display: flex;

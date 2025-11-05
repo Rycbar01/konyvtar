@@ -1,9 +1,10 @@
 // src/Components/Home.jsx
 
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import KonyvKartyaja from './KonyvKartya';
 import OlvasasiNaptar from './OlvasasiNaptar';
 import './Home.css';
+
 
 // -----------------------------------------------------------
 // A KonyvModal Külön Komponens (vagy itt, a Home felett)
@@ -129,8 +130,28 @@ const kiemeltKonyvek = [
 // -----------------------------------------------------------
 
 const Home = () => {
+
+    
     // State: A modal által kiválasztott könyv ID-jének tárolása (null = modal zárva)
     const [kivalasztottKonyvId, setKivalasztottKonyvId] = useState(null);
+
+
+   // GÖRGETÉS LETILTÁSA ÉS NULLÁZÁSA
+   useEffect(() => {
+    // 1. Ablak görgetési pozíció nullázása
+    window.scrollTo(0, 0); 
+    
+    // 2. A teljes dokumentum (ha van) görgetési pozíciójának nullázása
+    document.documentElement.scrollTop = 0; 
+    document.body.scrollTop = 0;
+    
+    // 3. Görgetés letiltása a Home oldalon
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+        document.body.style.overflow = 'scroll';
+    };
+}, []);
     
     // Függvény a modal megnyitásához
     const handleOpenModal = (id) => {
@@ -146,7 +167,7 @@ const Home = () => {
     const konyvAdat = kiemeltKonyvek.find(k => k.id === kivalasztottKonyvId);
 
     return (
-      <div className="home-layout-container"> 
+      <div className="home-page home-layout-container"> 
       
       
       {/* 2. FŐ TARTALOM (Jobb oldali oszlop, tartalmazza a Statisztikákat, Naptárat és Könyveket) */}

@@ -1,18 +1,29 @@
 /* src/Components/Home.css */
-body {
-    overflow: hidden;
+
+
+
+.home-page {
+    height: 100vh;
+    overflow: hidden;       /* sem függőleges, sem vízszintes scroll */
+    display: flex;
+    flex-direction: column;
 }
+
 /* Fő elrendezés */
 .home-layout-container {
     display: flex;
     gap: 30px;
     align-items: flex-start;
     width: 100%;
+    overflow: hidden !important;
 }
 
 .home-main-content {
     flex-grow: 1;
     width: 100%;
+    body{
+        overflow: hidden !important;
+    }
 }
 
 h1, h2 {
