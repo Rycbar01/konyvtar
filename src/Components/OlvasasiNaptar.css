@@ -1,0 +1,100 @@
+/* src/Components/OlvasasiNaptar.css */
+
+.olvasasi-naptar-kontener {
+    width: 100%;
+    max-width: 300px; /* Mini méret korlátozása */
+    /*margin: 20px auto;*/
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.naptar-fejlec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.naptar-fejlec h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.nav-gomb {
+    background: #ccc;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-gomb:hover {
+    background: #bbb;
+}
+
+.naptar-fejlecek,
+.naptar-napok {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 oszlop a 7 napnak */
+    text-align: center;
+    gap: 5px;
+}
+
+.naptar-fejlecek {
+    font-weight: bold;
+    color: #777;
+    font-size: 0.9em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.naptar-nap {
+    padding: 2px 0;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1; /* Négyzetes cellák */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    transition: background-color 0.1s;
+}
+
+.naptar-nap.ma {
+    border: 2px solid #76bc3e; /* keret a mai napon */
+    color: #76bc3e;
+    background-color: #eaf5ff;
+}
+
+.naptar-nap.olvasva {
+    background-color: #4CAF50; /* Zöld háttér az olvasott napokon */
+    color: white;
+    font-weight: bold;
+}
+
+.naptar-nap:not(.ures-nap):not(.olvasva):hover {
+    background-color: #e0e0e0;
+}
+
+/* Jövőbeli napok halványítása */
+.naptar-nap:not(.ures-nap):not([style*="cursor: pointer"]):not(.ma) {
+    opacity: 0.5;
+}
+
+.ures-nap {
+    visibility: hidden;
+}
+
+.naptar-focim {
+    font-size: 1.2em;
+    color: #333;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px; /* Térköz a navigációs sáv fölött */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+}

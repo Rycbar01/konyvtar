@@ -1,0 +1,41 @@
+/* src/Components/OsszKonyvek.css */
+
+.ossz-konyvek-oldal {
+    padding: 20px;
+}
+
+.konyv-tablazat {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.konyv-tablazat th, .konyv-tablazat td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.konyv-tablazat th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.konyv-tablazat tbody tr:nth-child(even) {
+    background-color: #f9f9f9; 
+}
+
+/* Értékelés Stílusok */
+.ertekeles-kontener {
+    color: gold; 
+    font-size: 1.2em;
+    letter-spacing: 2px; 
+}
+
+.csillag.ures {
+    color: #ccc; 
+}

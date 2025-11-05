@@ -1,0 +1,115 @@
+/* src/Components/Home.css */
+body {
+    overflow: hidden;
+}
+/* Fő elrendezés */
+.home-layout-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.home-main-content {
+    flex-grow: 1;
+    width: 100%;
+}
+
+h1, h2 {
+    color: rgb(14, 120, 4);
+}
+
+/* ---- Gyors statisztikák + Naptár szekció ---- */
+.stats-container {
+    display: flex;
+    justify-content: space-between; /* kártyák balra, naptár jobbra */
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 35px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Jobb oldali naptár – legyen távolabb a jobb széltől */
+.stats-container > div:last-child {
+    flex: 1;         /* hagyjuk nőni */
+    max-width: 100%; /* <-- 350px helyett engedjük kitölteni */
+    margin-right: 10px; /* felesleges szűkítés eltávolítva */
+}
+
+
+/* Bal oldali statisztikai rács */
+.stat-card-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    flex: 2; 
+}
+
+/* Egyes statisztikai kártyák */
+.stat-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    min-height: 150px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-top: 8px;
+}
+
+.stat-subtext {
+    font-size: 1em;
+    color: #555;
+    margin-top: 4px;
+}
+.stat-card .stat-number {
+    margin: 5px 0;
+}
+
+
+/* Mini könyvlista (pl. Porosodók) */
+.mini-book-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.mini-book-list li {
+    margin: 4px 0;
+}
+
+/* Jobb oldali naptár konténer */
+.stats-container > .olvasasi-naptar,
+.stats-container > .OlvasasiNaptar,
+.stats-container > div:last-child {
+    flex: 1; /* kisebb, mint a stat kártyák része */
+    max-width: 350px;
+}
+
+/* Reszponzivitás kisebb képernyőre */
+@media (max-width: 900px) {
+    .stats-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .stat-card-group {
+        grid-template-columns: repeat(2, 1fr); /* 2 oszlop mobilon */
+    }
+}
+
+

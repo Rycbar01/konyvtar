@@ -1,0 +1,75 @@
+/* src/Components/KonyvKartya.css */
+
+.konyv-kartya {
+    /* Az egész kártya egy Flex konténer */
+    display: flex;
+    /* Fentről lefelé rendezi a Borítót és a Tartalmat */
+    flex-direction: column; 
+    
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.2s;
+    height: 100%; /* Fontos a Grid miatt: kitölti a rendelkezésre álló magasságot */
+}
+
+.konyv-kartya:hover {
+    transform: translateY(-3px);
+}
+
+.boritokep-kontener {
+    /* Kép középre igazítása a kártya tetején */
+    text-align: center; 
+    margin-bottom: 15px;
+    /* Megadunk egy fix magasságot, hogy a kártyák magassága ne változzon a kép miatt */
+    height: 180px; 
+}
+
+.boritokep {
+    width: auto;
+    max-height: 100%; /* A konténer magasságához igazodik */
+    max-width: 100%; /* Max. 100% széles lehet */
+    object-fit: contain; /* Megtartja az arányokat, nem vágja le */
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.kartya-tartalom {
+    flex-grow: 1; /* Hogy a maradék helyet kitöltse */
+}
+
+.kartya-szerzo {
+    color: #555;
+    font-style: italic;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.kartya-leiras {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    /* Limitáljuk a leírás hosszát 3 sorra */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.olvasasi-gomb {
+    /* A gomb alulra kerül és kitölti a kártya szélességét */
+    width: 100%; 
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.olvasasi-gomb:hover {
+    background-color: #45a049;
+}

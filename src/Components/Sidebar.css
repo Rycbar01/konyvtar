@@ -1,0 +1,64 @@
+/* src/Components/Sidebar.css */
+
+.main-sidebar {
+    width: 250px;
+    flex-shrink: 0; 
+    flex-grow: 0;  
+    flex-basis: auto;
+    min-width: 200px; 
+    background-color: #384238; 
+    color: #e0e0e0;
+    padding: 20px 15px;
+    border-radius: 6px;
+}
+
+.sidebar-section {
+    margin-bottom: 25px;
+}
+
+.sidebar-section h3 {
+    color: #249000;
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-section li a {
+    display: block;
+    color: #c0c0c0; 
+    text-decoration: none;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-section li a:hover {
+    background-color: #0e7804; 
+    color: white;
+}
+
+.active-link {
+    background-color: #0e7804; 
+    color: white !important; 
+    text-decoration: none;
+    border-left: 5px solid #4CAF50; 
+    padding-left: 11px;
+}
+
+.active-link:hover {
+    background-color: #3b3051;
+}
+
+.sidebar-section ul li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; 
+}

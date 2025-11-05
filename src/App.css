@@ -1,0 +1,153 @@
+/* src/App.css */
+
+/* 1. Általános Alapstílusok (body, fő konténer) */
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #191919; /*  háttér */
+    color: #333; /* Sötétszürke alap szöveg */
+    /*overflow: hidden;*/ /*ettől nem görgethető*/
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-container {
+    padding: 20px;
+    flex-grow: 1; 
+    /* Ez a konténer tartalmazza majd a Home, Konyvek, stb. komponenseket */
+}
+
+.page-content-wrapper {
+    display: flex; /* Ezzel kerülnek egymás mellé a benne lévő elemek */
+    gap: 30px;     
+    align-items: flex-start; /* Fentről induljon az elrendezés */
+    flex-grow: 1; 
+}
+
+/* Ez biztosítja, hogy a Routes által megjelenített tartalom (pl. Home, ÖsszKonyvek) kitöltse a fennmaradó helyet */
+.routes-container { 
+    flex-grow: 1; /* A fő tartalom kitölti a maradék helyet */
+}
+
+/* VISSZAÁLLÍTÁS: Mivel a Sidebar-t kivettük a Home-ból, a korábbi home-layout-container flex logikáját törölhetjük vagy módosíthatjuk: */
+.home-layout-container {
+     /* display: flex; és a gap: 30px már a .page-content-wrapper-ben van, itt már nem kell. */
+    display: block; 
+}
+
+/* Biztosítjuk, hogy a Home fő tartalmi része (statisztikák, könyvek) ismét a teljes szélességet használja: */
+.home-main-content {
+    flex-grow: 1; /* Ezt hagyd meg a flexbox működéséhez a statisztikák alatt */
+}
+
+
+
+.main-nav {
+    /* Teljes szélesség és magas kezdés */
+    width: 100%;
+    height: 250px; /* Állítsd be a kívánt magasságot, pl. 250px */
+    
+    /* Háttérkép beállítása */
+    background-image: url('src/assets/images/05.jpg'); /* CSERÉLD KI a saját képed útvonalára */
+    background-size: cover; /* A kép kitölti a konténert */
+    background-position: center; /* Középre igazítás */
+    
+    /* Enyhe sötétítés (overlay) a jobb olvashatóságért */
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.4); 
+    
+    /* Navigáció és tartalom igazítása */
+    display: flex;
+    flex-direction: column; /* A tartalom felülről lefelé rendeződjön */
+    justify-content: flex-start; /* Kezdje felül a linkeket */
+    align-items: center; /* A tartalom legyen középen */
+    
+    color: white; /* Fehér betűszín */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 0; /* Külső padding elvétele */
+}
+
+.nav-links {
+    list-style: none; /* Eltünteti a pontokat */
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: white; /* Linkek színe fehér */
+    text-decoration: none;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.nav-links li a:hover {
+    background-color: #575757;
+}
+
+/* ---------------------------------------------------- */
+
+/* 3. Home Komponens Stílusok (Home.jsx - stat-card) */
+
+h1, h2 {
+    color: rgb(14, 120, 4);
+}
+
+.stats-container {
+    display: flex;
+    align-items: flex-start; 
+    gap: 30px;     
+    margin-bottom: 35px; 
+    padding: 10px;
+}
+
+.stat-card-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    gap: 20px;
+    flex-grow: 1; 
+    align-items: flex-start; 
+}
+
+.stat-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 154px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    text-align: center;    
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.kartyazas-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px; 
+    padding: 10px 0;
+}
+
+.home-layout-container {
+    display: flex;
+    gap: 30px; 
+    align-items: flex-start; 
+}
+
+.home-main-content {
+    flex-grow: 1; /* A fő tartalom kitölti a maradék helyet */
+}
