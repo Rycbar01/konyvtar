@@ -39,3 +39,56 @@
   margin-top: -40px; /* vagy 0, ha teljesen fel akarod húzni */
   padding: 10px;
 }
+/* Konténer a haladáshoz */
+.haladas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+/* Progress és százalék egy sorban */
+.haladas-felso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Progress bar szépítés */
+.haladas-progress {
+  width: 120px;
+  height: 10px;
+  appearance: none;
+}
+
+.haladas-progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.haladas-progress::-webkit-progress-value {
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+/* Százalék jobb oldalt */
+.haladas-szazalek {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Input mező a csík alatt */
+.oldal-input {
+  width: 70px;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.oldal-input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
