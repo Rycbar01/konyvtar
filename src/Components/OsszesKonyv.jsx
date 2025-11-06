@@ -76,7 +76,7 @@ const OsszesKonyv = () => {
             <th>Szerző</th>
             <th>Cím</th>
             <th>Oldalszám</th>
-            <th>Haladás</th>
+            <th>Előrehaladás</th>
             <th>Műfaj</th>
             <th>Kiadó</th>
             <th>Státusz</th>
