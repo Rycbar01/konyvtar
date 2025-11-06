@@ -12,6 +12,7 @@ const kezdetiKonyvek = [
     statusz: "Elolvasva",
     ertekeles: 5,
     aktualisOldal: 560,
+    ev: 2025,
     boritokepUrl: "src/assets/images/01.jpg",
   },
   {

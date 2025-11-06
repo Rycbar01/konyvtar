@@ -1,0 +1,65 @@
+/* Konténer */
+.eves-olvasmanyok-container {
+    padding: 20px;
+    color: white;
+    margin-top: -40px;
+  }
+  
+  /* Táblázat */
+  .konyv-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .konyv-tabla th,
+  .konyv-tabla td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #444;
+    text-align: left;
+  }
+  
+  .konyv-tabla th {
+    background-color: #3a3a3a;
+    color: #00d26a;
+    font-weight: bold;
+  }
+  
+  .konyv-tabla tr:hover {
+    background-color: #3f3f3f;
+    transition: background-color 0.2s;
+  }
+  
+  /* Formátum legördülő és dátum input harmonizálása */
+  .formatum-select,
+  .datum-input {
+    padding: 6px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #1f1f1f;
+    color: #fff;
+    font-size: 0.85rem;
+  }
+  
+  .formatum-select:focus,
+  .datum-input:focus {
+    outline: none;
+    border-color: #00d26a;
+    box-shadow: 0 0 4px rgba(0, 210, 106, 0.4);
+  }
+  
+  /* Csillag értékelés színe */
+  .csillagok {
+    color: #ffd700;
+  }
+  
+  /* Dátum szöveg jobb oldalt */
+  .datum-szoveg {
+    display: block;
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-top: 3px;
+  }
+  

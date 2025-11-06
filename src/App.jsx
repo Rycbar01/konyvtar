@@ -10,7 +10,7 @@ import OsszKonyvek from './Components/OsszesKonyv';
 import Home from './Components/Home'; 
 import Sidebar from './Components/Sidebar';
 import AktualisKonyvek from './Components/AktualisKonyvek';
-
+import EvesOlvasmanyok from './Components/EvesOlvasmanyok';
 
 
 function App() {
@@ -45,6 +45,7 @@ function App() {
               <Route path="/aktualis" element={<AktualisKonyvek />} />
               <Route path="/osszes" element={<OsszKonyvek />} />
               <Route path="/terv" element={<h2>Olvasási Terv Készül...</h2>} />
+              <Route path="/eves" element={<EvesOlvasmanyok />} />
               <Route path="/kivansaglista" element={<h2>Kívánságlista Készül...</h2>} />
               <Route path="/ujkonyv" element={<h2>Új Könyv Felvitele Készül...</h2>} />
 
