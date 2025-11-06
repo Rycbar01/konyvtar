@@ -1,11 +1,41 @@
-/* src/Components/OsszesKonyv.css */
-
 .osszes-konyv-container {
-    padding: 20px;
-  }
-  
-  .konyvlista-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
+  padding: 20px;
+  color: white;
+}
+
+/* Táblázat stílus */
+.konyv-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2b2b2b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.konyv-tabla th, .konyv-tabla td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #444;
+  text-align: left;
+}
+
+.konyv-tabla th {
+  background-color: #3a3a3a;
+  color: #00d26a;
+  font-weight: bold;
+}
+
+.konyv-tabla tr:hover {
+  background-color: #3f3f3f;
+  transition: background-color 0.2s;
+}
+
+/* Borítókép stílus */
+.borito-kep {
+  width: 60px;
+  height: auto;
+  border-radius: 4px;
+}
+.osszes-konyv-container {
+  margin-top: -40px; /* vagy 0, ha teljesen fel akarod húzni */
+  padding: 10px;
+}
