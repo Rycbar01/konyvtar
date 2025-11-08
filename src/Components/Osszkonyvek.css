@@ -1,8 +1,3 @@
-.osszes-konyv-container {
-  padding: 20px;
-  color: white;
-}
-
 /* Táblázat stílus */
 .konyv-tabla {
   width: 100%;
@@ -19,9 +14,12 @@
 }
 
 .konyv-tabla th {
+  position: sticky;
+  top: 0px;
   background-color: #3a3a3a;
   color: #4CAF50;
   font-weight: bold;
+  z-index: 1; 
 }
 
 .konyv-tabla tr:hover {
@@ -36,8 +34,30 @@
   border-radius: 4px;
 }
 .osszes-konyv-container {
-  margin-top: -40px; /* vagy 0, ha teljesen fel akarod húzni */
-  padding: 10px;
+  position: relative;
+  padding-top: 130px;
+  padding: 20px;
+  color: white;
+}
+.osszes-konyv-fejlec {
+  color: white;
+  position: fixed;
+  top: 200px; /* ha a Navbar 250px magas, igazítsd hozzá */
+  left: 300px; /* ha a Sidebar 250px + 30px gap */
+  width: calc(100% - 320px); /* a tartalom szélessége a Sidebar mellett */
+  background-color: #191919;
+  z-index: 1000;
+  padding: 10px 20px;
+}
+
+.osszes-konyv-fejlec h2 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #0e7804;
+}
+
+.osszes-konyv-tartalom {
+  margin-top: 100px; /* eltolás, hogy ne csússzon a fix fejléc alá */
 }
 /* Konténer a haladáshoz */
 .haladas-container {

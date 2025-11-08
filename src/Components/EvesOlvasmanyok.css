@@ -2,7 +2,8 @@
 .eves-olvasmanyok-container {
     padding: 20px;
     color: white;
-    margin-top: -40px;
+    
+  padding-top: 130px
   }
   
   /* Táblázat */
@@ -23,7 +24,7 @@
   
   .konyv-tabla th {
     background-color: #3a3a3a;
-    color: #0e7804;
+    color: #00d26a;
     font-weight: bold;
   }
   

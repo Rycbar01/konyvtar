@@ -40,6 +40,138 @@ const kezdetiKonyvek = [
     boritokepUrl: "src/assets/images/03.jpg",
   },
   {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
+    id: 103,
+    cim: "Szirmokba zárt szavak",
+    szerzo: "Holly Ringland",
+    oldalszam: 448,
+    mufaj: "Szépirodalom",
+    kiado: "General Press",
+    statusz: "Folyamatban",
+    ertekeles: 3,
+    aktualisOldal: 200,
+    boritokepUrl: "src/assets/images/03.jpg",
+  },
+  {
     id: 104,
     cim: "Ónix vihar",
     szerzo: "Rebecca Yarros",
@@ -70,7 +202,10 @@ const OsszesKonyv = () => {
 
   return (
     <div className="osszes-konyv-container">
-      <h2>📖 Összes könyv</h2>
+      <div className="osszes-konyv-fejlec">
+        <h2>📖 Összes könyv</h2>
+      </div>
+      <div className="osszes-konyv-tartalom">
       <table className="konyv-tabla">
         <thead>
           <tr>
@@ -134,6 +269,7 @@ const OsszesKonyv = () => {
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

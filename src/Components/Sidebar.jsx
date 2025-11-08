@@ -4,7 +4,15 @@ import './Sidebar.css';
 
 const Sidebar = () => {
     return (
+        
+       
+
         <aside className="main-sidebar">
+
+
+            
+
+
 
             {/* Quick Links / Gyors Linkek */}
             <div className="sidebar-section quick-links">

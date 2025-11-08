@@ -16,6 +16,7 @@ body {
 .content-container {
     padding: 20px;
     flex-grow: 1; /* Hogy kitöltse a rendelkezésre álló helyet */
+    
 }
 
 /* Navbar stílusok (Navbar.jsx-hez) */
@@ -26,6 +27,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .nav-links {

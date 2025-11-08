@@ -1,16 +1,21 @@
 /* src/Components/Sidebar.css */
 
 .main-sidebar {
-    width: 250px;
+    position: fixed; /* Ezt a sort aktiváljuk */
+    top: 345px;          /* Rögzítés a képernyő tetejéhez */
+    left: 20px;         /* Rögzítés a képernyő bal oldalához */
+    width: 250px;     
     flex-shrink: 0; 
     flex-grow: 0;  
     flex-basis: auto;
     min-width: 200px; 
+    height: 55vh;
     background-color: #384238; 
     color: #e0e0e0;
     padding: 20px 15px;
     border-radius: 6px;
 }
+
 
 .sidebar-section {
     margin-bottom: 25px;

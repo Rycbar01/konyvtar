@@ -20,12 +20,14 @@ function App() {
       
       {/* 1. Navbar - EZ MINDEN OLDALON FENT MARAD */}
       <Navbar /> 
-      
+     
       <main className="content-container">
         
-        <div className="global-page-title">
-            <h1>📚 My Library</h1>
-        </div>
+         {/* Fix cím a Sidebar fölött */}
+         <div className="sidebar-header">
+         <h1>📚 My Library</h1>
+       </div>
+                
 
         <div className="page-content-wrapper"> 
         
