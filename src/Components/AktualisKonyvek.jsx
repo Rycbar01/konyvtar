@@ -149,7 +149,9 @@ const AktualisKonyvek = () => {
 
   return (
     <div className="osszes-konyv-container">
+      <div className="osszes-konyv-fejlec">
       <h2>⏳ Aktuális olvasmányok</h2>
+      </div>
       <table className="konyv-tabla">
         <thead>
           <tr>

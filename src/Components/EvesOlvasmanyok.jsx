@@ -141,7 +141,9 @@ const EvesOlvasmanyok = () => {
 
   return (
     <div className="eves-olvasmanyok-container">
+      <div className="osszes-konyv-fejlec">
       <h2>📆 Éves Olvasmányok</h2>
+      </div>
       <table className="konyv-tabla">
         <thead>
           <tr>

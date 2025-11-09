@@ -16,7 +16,6 @@ body {
 .content-container {
     padding: 20px;
     flex-grow: 1; /* Hogy kitöltse a rendelkezésre álló helyet */
-    
 }
 
 /* Navbar stílusok (Navbar.jsx-hez) */

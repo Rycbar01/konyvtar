@@ -1,4 +1,5 @@
 /* Táblázat stílus */
+/* Táblázat */
 .konyv-tabla {
   width: 100%;
   border-collapse: collapse;
@@ -7,19 +8,22 @@
   overflow: hidden;
 }
 
-.konyv-tabla th, .konyv-tabla td {
-  padding: 10px 15px;
-  border-bottom: 1px solid #444;
-  text-align: left;
-}
 
-.konyv-tabla th {
-  position: sticky;
-  top: 0px;
+/* Sticky thead */
+.konyv-tabla thead th {
+  position: static !important;
   background-color: #3a3a3a;
   color: #4CAF50;
   font-weight: bold;
-  z-index: 1; 
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+/* Sorok és hover */
+.konyv-tabla th, 
+.konyv-tabla td {
+  padding: 10px 15px;
+  text-align: left;
 }
 
 .konyv-tabla tr:hover {
@@ -35,19 +39,19 @@
 }
 .osszes-konyv-container {
   position: relative;
-  padding-top: 130px;
   padding: 20px;
   color: white;
+  margin-top: 80px;
 }
+
 .osszes-konyv-fejlec {
-  color: white;
   position: fixed;
-  top: 200px; /* ha a Navbar 250px magas, igazítsd hozzá */
-  left: 300px; /* ha a Sidebar 250px + 30px gap */
-  width: calc(100% - 320px); /* a tartalom szélessége a Sidebar mellett */
-  background-color: #191919;
+  top: 200px;     
   z-index: 1000;
+  width: 76%; 
+  background-color: #191919;
   padding: 10px 20px;
+  border-bottom: 2px solid #333;
 }
 
 .osszes-konyv-fejlec h2 {
@@ -56,8 +60,10 @@
   color: #0e7804;
 }
 
+/* Görgethető táblázat rész */
 .osszes-konyv-tartalom {
-  margin-top: 100px; /* eltolás, hogy ne csússzon a fix fejléc alá */
+  overflow: visible; /* ne legyen külön görgetés */
+  margin-top: 10px; /* kis tér a cím után */
 }
 /* Konténer a haladáshoz */
 .haladas-container {
