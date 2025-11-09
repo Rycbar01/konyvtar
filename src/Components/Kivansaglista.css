@@ -1,13 +1,39 @@
-/* src/Components/OlvasasiTerv.css */
+/* src/Components/Kivansaglista.css */
 
-.olvasasi-terv-container {
-    color: #e0e0e0; /* Világos szöveg a sötét háttérre */
+/* Általános konténer és szöveg szín */
+.kivansaglista-container {
+    color: #e0e0e0; 
     padding: 20px;
 }
 
-.olvasasi-terv-container h2 {
+/* --- FEJLÉC RÖGZÍTÉSE --- */
+.lista-fejlec {
+    position: fixed;
+    top: 200px;      
+    z-index: 999;
+    background-color: #191919; 
+    padding: 20px 20px;
+    border-bottom: 2px solid #333;
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-fejlec h2 {
     color: #0e7804;
-    margin-bottom: 25px;
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.osszegzes {
+    font-size: 1em;
+    color: #cccccc;
+}
+
+.osszegzes strong {
+    color: #4CAF50;
+    font-weight: bold;
 }
 
 /* --- Űrlap stílusok (Felvitel) --- */
@@ -19,35 +45,42 @@
     background-color: #2b2b2b;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 150px; /* Hely a rögzített fejléchez */
 }
 
-.terv-input {
+.lista-input {
     padding: 10px 15px;
     border: 1px solid #444;
     border-radius: 4px;
-    background-color: #384238; /* Sötétebb input háttér */
+    background-color: #384238; 
     color: #e0e0e0;
     flex-grow: 1;
 }
 
-.terv-input::placeholder {
+.lista-input::placeholder {
     color: #a0a0a0;
 }
 
-.terv-gomb {
+.ar-input {
+    flex-grow: 0; 
+    width: 120px; 
+    text-align: center;
+}
+
+.lista-gomb {
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.2s, opacity 0.2s;
+    transition: background-color 0.2s;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .add-gomb {
-    background-color: #0e7804; /* Zöld hozzáadás gomb */
+    background-color: #0e7804; 
     color: white;
 }
 
@@ -58,55 +91,11 @@
 
 /* --- Lista Elemek Stílusai --- */
 
-/* src/Components/OlvasasiTerv.css */
-
-/* --- FEJLÉC RÖGZÍTÉSE --- */
-
-.terv-fejlec {
-    position: fixed;
-    top: 200px;  
-    z-index: 999;
-    width: 76%; 
-    background-color: #191919;
-    padding: 20px 20px;
-    border-bottom: 2px solid #333;
+.lista-tartalom {
+    padding-top: 10px; /* Kisebb tér a lista és a fejléc között */
 }
 
-.terv-fejlec h2 {
-    margin: 0;
-    font-size: 1.8em;
-    color: #0e7804;
-}
-
-.uj-konyv-form {
-    margin-top: 60px; 
-}
-.terv-input.oldalszam-input {
-    flex-grow: 0; /* Ne töltsön ki annyi helyet */
-    width: 120px; /* Fix szélesség a jobb megjelenésért */
-    text-align: center;
-}
-
-/* Oldalszám megjelenítése a listaelemben */
-.oldalszam-display {
-    margin-left: 30px;
-    margin-right: auto; /* Ez tolja ki a törlés gombot jobbra */
-    font-size: 1em;
-    font-weight: 500;
-    color: #4CAF50; /* Zöld kiemelés */
-    min-width: 100px; /* Hely biztosítása */
-    text-align: right;
-}
-
-/* Stílus az elolvasott könyvnek */
-.terv-item.olvasva .konyv-cim,
-.terv-item.olvasva .konyv-szerzo,
-.terv-item.olvasva .oldalszam-display { /* <-- IDE IS ADD HOZZÁ */
-    text-decoration: line-through;
-    color: #888888;
-}
-
-.terv-item {
+.lista-item {
     display: flex;
     align-items: center;
     padding: 15px 20px;
@@ -117,7 +106,7 @@
     transition: background-color 0.2s;
 }
 
-.terv-item:hover {
+.lista-item:hover {
     background-color: #3f3f3f;
 }
 
@@ -140,10 +129,20 @@
     margin-top: 2px;
 }
 
+.ar-display {
+    margin-left: 30px;
+    margin-right: 30px; /* Elég hely a gombig */
+    font-size: 1em;
+    font-weight: 500;
+    color: #FFD700; /* Arany szín az ár kiemeléséhez */
+    min-width: 120px; 
+    text-align: right;
+}
+
 .delete-gomb {
     background-color: transparent;
-    color: #ff5555; /* Piros törlés ikon */
-    margin-left: 20px;
+    color: #ff5555; 
+    margin-left: auto; /* Ez tolja ki jobbra */
 }
 
 .delete-gomb:hover {
@@ -153,8 +152,7 @@
 
 
 /* --- Checkbox Stílus --- */
-
-/* Az egyedi checkbox konténer */
+/* (Használd ugyanazt a checkbox stílust, mint az OlvasasiTerv.css-ben) */
 .checkbox-container {
     display: block;
     position: relative;
@@ -164,7 +162,6 @@
     user-select: none;
 }
 
-/* A tényleges checkbox elrejtése */
 .checkbox-container input {
     position: absolute;
     opacity: 0;
@@ -173,14 +170,13 @@
     width: 0;
 }
 
-/* Az egyedi jelölőnégyzet */
 .checkmark {
     position: absolute;
     top: 0;
     left: 0;
     height: 20px;
     width: 20px;
-    background-color: #384238; /* Alap háttér */
+    background-color: #384238; 
     border: 1px solid #4CAF50;
     border-radius: 4px;
     display: flex;
@@ -190,16 +186,20 @@
     font-size: 0.8em;
 }
 
-/* Állapot: bejelölve */
 .checkbox-container input:checked ~ .checkmark {
-    background-color: #4CAF50; /* Zöld háttér bejelölve */
+    background-color: #4CAF50; 
     border: 1px solid #4CAF50;
 }
 
-/* Stílus az elolvasott könyvnek */
-.terv-item.olvasva .konyv-cim,
-.terv-item.olvasva .konyv-szerzo {
+/* Stílus a BESZERZETT könyvnek */
+.lista-item.beszerzett .konyv-cim,
+.lista-item.beszerzett .konyv-szerzo,
+.lista-item.beszerzett .ar-display {
     text-decoration: line-through;
+    color: #888888;
+}
+
+.lista-item.beszerzett .ar-display {
     color: #888888;
 }
 
