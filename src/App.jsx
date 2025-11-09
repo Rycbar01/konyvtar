@@ -13,6 +13,7 @@ import AktualisKonyvek from './Components/AktualisKonyvek';
 import EvesOlvasmanyok from './Components/EvesOlvasmanyok';
 import OlvasasiTerv from './Components/OlvasasiTerv';
 import Kivansaglista from './Components/Kivansaglista';
+import UjKonyvFelvitel from './Components/UjKonyvFelvitel';
 
 
 
@@ -52,7 +53,7 @@ function App() {
               <Route path="/terv" element={<OlvasasiTerv />} />
               <Route path="/eves" element={<EvesOlvasmanyok />} />
               <Route path="/kivansaglista" element={<Kivansaglista />} />
-              <Route path="/ujkonyv" element={<h2>Új Könyv felvitele készül...</h2>} />
+              <Route path="/ujkonyv" element={<UjKonyvFelvitel />} />
 
           </Routes>
 
