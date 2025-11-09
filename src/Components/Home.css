@@ -60,8 +60,9 @@ h1, h2 {
 
 /* Egyes statisztikai kártyák */
 .stat-card {
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: #30302e;
+    border: 1px solid #30302e;
+    color: #e0e0e0;
     border-radius: 8px;
     min-height: 150px;
     padding: 10px;

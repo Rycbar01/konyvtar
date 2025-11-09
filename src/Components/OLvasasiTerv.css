@@ -1,0 +1,212 @@
+/* src/Components/OlvasasiTerv.css */
+
+.olvasasi-terv-container {
+    color: #e0e0e0; /* Világos szöveg a sötét háttérre */
+    padding: 20px;
+}
+
+.olvasasi-terv-container h2 {
+    color: #0e7804;
+    margin-bottom: 25px;
+}
+
+/* --- Űrlap stílusok (Felvitel) --- */
+.uj-konyv-form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.terv-input {
+    padding: 10px 15px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #384238; /* Sötétebb input háttér */
+    color: #e0e0e0;
+    flex-grow: 1;
+}
+
+.terv-input::placeholder {
+    color: #a0a0a0;
+}
+
+.terv-gomb {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-gomb {
+    background-color: #0e7804; /* Zöld hozzáadás gomb */
+    color: white;
+}
+
+.add-gomb:hover {
+    background-color: #0a5c03;
+}
+
+
+/* --- Lista Elemek Stílusai --- */
+
+/* src/Components/OlvasasiTerv.css */
+
+/* --- FEJLÉC RÖGZÍTÉSE --- */
+
+.terv-fejlec {
+    position: fixed;
+    top: 200px;  
+    z-index: 999;
+    width: calc(100% - 1100px);
+    background-color: #191919;
+    padding: 10px 20px;
+    border-bottom: 2px solid #333;
+}
+
+.terv-fejlec h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #0e7804;
+}
+
+.uj-konyv-form {
+    margin-top: 60px; 
+}
+.terv-input.oldalszam-input {
+    flex-grow: 0; /* Ne töltsön ki annyi helyet */
+    width: 120px; /* Fix szélesség a jobb megjelenésért */
+    text-align: center;
+}
+
+/* Oldalszám megjelenítése a listaelemben */
+.oldalszam-display {
+    margin-left: 30px;
+    margin-right: auto; /* Ez tolja ki a törlés gombot jobbra */
+    font-size: 1em;
+    font-weight: 500;
+    color: #4CAF50; /* Zöld kiemelés */
+    min-width: 100px; /* Hely biztosítása */
+    text-align: right;
+}
+
+/* Stílus az elolvasott könyvnek */
+.terv-item.olvasva .konyv-cim,
+.terv-item.olvasva .konyv-szerzo,
+.terv-item.olvasva .oldalszam-display { /* <-- IDE IS ADD HOZZÁ */
+    text-decoration: line-through;
+    color: #888888;
+}
+
+.terv-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+}
+
+.terv-item:hover {
+    background-color: #3f3f3f;
+}
+
+.konyv-info {
+    flex-grow: 1;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.konyv-cim {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.konyv-szerzo {
+    font-size: 0.9em;
+    color: #c0c0c0;
+    margin-top: 2px;
+}
+
+.delete-gomb {
+    background-color: transparent;
+    color: #ff5555; /* Piros törlés ikon */
+    margin-left: 20px;
+}
+
+.delete-gomb:hover {
+    opacity: 0.7;
+    background-color: transparent;
+}
+
+
+/* --- Checkbox Stílus --- */
+
+/* Az egyedi checkbox konténer */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+/* A tényleges checkbox elrejtése */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Az egyedi jelölőnégyzet */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #384238; /* Alap háttér */
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8em;
+}
+
+/* Állapot: bejelölve */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #4CAF50; /* Zöld háttér bejelölve */
+    border: 1px solid #4CAF50;
+}
+
+/* Stílus az elolvasott könyvnek */
+.terv-item.olvasva .konyv-cim,
+.terv-item.olvasva .konyv-szerzo {
+    text-decoration: line-through;
+    color: #888888;
+}
+
+.ures-uzenet {
+    text-align: center;
+    color: #a0a0a0;
+    padding: 30px;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+}

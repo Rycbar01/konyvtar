@@ -11,6 +11,7 @@ import Home from './Components/Home';
 import Sidebar from './Components/Sidebar';
 import AktualisKonyvek from './Components/AktualisKonyvek';
 import EvesOlvasmanyok from './Components/EvesOlvasmanyok';
+import OlvasasiTerv from './Components/OlvasasiTerv';
 
 
 
@@ -47,7 +48,7 @@ function App() {
               {/* JÖVŐBELI ÚTVONALAK (Helyőrzők a Navbar linkjeihez) */}
               <Route path="/aktualis" element={<AktualisKonyvek />} />
               <Route path="/osszes" element={<OsszKonyvek />} />
-              <Route path="/terv" element={<h2>Olvasási terv készül...</h2>} />
+              <Route path="/terv" element={<OlvasasiTerv />} />
               <Route path="/eves" element={<EvesOlvasmanyok />} />
               <Route path="/kivansaglista" element={<h2>Kívánságlista készül...</h2>} />
               <Route path="/ujkonyv" element={<h2>Új Könyv felvitele készül...</h2>} />
