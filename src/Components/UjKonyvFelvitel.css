@@ -3,6 +3,7 @@
 .uj-konyv-container {
     color: #e0e0e0; 
     padding: 20px;
+    width: 95%;
 }
 
 /* --- FEJLÉC RÖGZÍTÉSE (Konzisztens az Olvasási Tervvel) --- */
@@ -123,4 +124,3 @@ legend {
 .save-gomb:hover {
     background-color: #0a5c03;
 }
-
