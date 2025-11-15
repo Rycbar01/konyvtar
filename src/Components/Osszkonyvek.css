@@ -30,12 +30,6 @@
   transition: background-color 0.2s;
 }
 
-/* Borítókép stílus */
-.borito-kep {
-  width: 60px;
-  height: auto;
-  border-radius: 4px;
-}
 .osszes-konyv-container {
   position: relative;
   padding: 20px;
