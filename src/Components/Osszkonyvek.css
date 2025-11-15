@@ -8,7 +8,6 @@
   overflow: hidden;
 }
 
-
 /* Sticky thead */
 .konyv-tabla thead th {
   position: static !important;
@@ -123,4 +122,37 @@
   outline: none;
   border-color: #4caf50;
   box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
+.uj-konyv-form-aktualis {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: #222;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  position: sticky;
+  top: 280px; /* ugyanannyi, mint a fejléced top + padding-ja */
+  z-index: 998;
+}
+
+.uj-konyv-form-aktualis input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #333;
+  color: white;
+}
+
+.hozzaad-gomb {
+  background: #0e7804;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.hozzaad-gomb:hover {
+  background: #0a5e03;
 }

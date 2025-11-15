@@ -25,7 +25,7 @@
     padding: 10px 15px;
     border: 1px solid #444;
     border-radius: 4px;
-    background-color: #384238; /* Sötétebb input háttér */
+    background-color: #222; /* Sötétebb input háttér */
     color: #e0e0e0;
     flex-grow: 1;
 }
