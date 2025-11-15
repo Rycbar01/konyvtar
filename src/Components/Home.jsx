@@ -1,7 +1,6 @@
 // src/Components/Home.jsx
 
 import React, { useState, useEffect } from 'react'; 
-import KonyvKartyaja from './KonyvKartya';
 import OlvasasiNaptar from './OlvasasiNaptar';
 import './Home.css';
 

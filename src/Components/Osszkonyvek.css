@@ -41,7 +41,13 @@
   position: relative;
   padding: 20px;
   color: white;
-  margin-top: 80px;
+  margin-top: 110px;
+}
+.aktualis-konyv-container {
+  position: relative;
+  padding: 20px;
+  color: white;
+  margin-top: 120px; /* vagy amennyi kell */
 }
 
 .osszes-konyv-fejlec {

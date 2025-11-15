@@ -55,11 +55,6 @@
     background-color: #0a5c03;
 }
 
-
-/* --- Lista Elemek Stílusai --- */
-
-/* src/Components/OlvasasiTerv.css */
-
 /* --- FEJLÉC RÖGZÍTÉSE --- */
 
 .terv-fejlec {
@@ -78,8 +73,10 @@
     color: #0e7804;
 }
 
-.uj-konyv-form {
-    margin-top: 60px; 
+.uj-konyv-form { 
+    position: sticky;
+    top: 280px; /* ugyanannyi, mint a fejléced top + padding-ja */
+    z-index: 998;
 }
 .terv-input.oldalszam-input {
     flex-grow: 0; /* Ne töltsön ki annyi helyet */
