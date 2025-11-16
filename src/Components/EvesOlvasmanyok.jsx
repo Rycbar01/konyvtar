@@ -94,11 +94,6 @@ const EvesOlvasmanyok = () => {
           ))}
         </select>
         <input
-          type="date"
-          value={ujDatum}
-          onChange={(e) => setUjDatum(e.target.value)}
-        />
-        <input
           type="number"
           min="0"
           max="5"
@@ -106,6 +101,12 @@ const EvesOlvasmanyok = () => {
           value={ujErtekeles}
           onChange={(e) => setUjErtekeles(e.target.value)}
         />
+        <input
+          type="date"
+          value={ujDatum}
+          onChange={(e) => setUjDatum(e.target.value)}
+        />
+        
 
         <button type="submit" className="hozzaad-gomb">
           + Hozzáadás

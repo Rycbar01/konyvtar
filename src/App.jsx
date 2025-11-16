@@ -3,7 +3,6 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom'; 
 
 import Navbar from './Components/Navbar';
-import OsszKonyvek from './Components/OsszesKonyv'; 
 import Home from './Components/Home'; 
 import Sidebar from './Components/Sidebar';
 import AktualisKonyvek from './Components/AktualisKonyvek';
@@ -11,9 +10,10 @@ import EvesOlvasmanyok from './Components/EvesOlvasmanyok';
 import OlvasasiTerv from './Components/OlvasasiTerv';
 import Kivansaglista from './Components/Kivansaglista';
 import UjKonyvFelvitel from './Components/UjKonyvFelvitel';
+import OsszesKonyvSzerkesztes from "./Components/OsszesKonyvSzerkesztes"; // új szerkesztő nézet
 
 function App() {
-  // Itt tároljuk az összes könyvet
+  // Az összes könyv state-je itt van
   const [konyvek, setKonyvek] = useState([
     { id: 101, cim: "Addie LaRue láthatatlan élete", szerzo: "V.E. Schwab", oldalszam: 560, mufaj: "Fantasy", kiado: "Fumax", statusz: "Elolvasva", ertekeles: 5, aktualisOldal: 560 },
     { id: 102, cim: "A lány hét névvel", szerzo: "Hyeonseo Lee", oldalszam: 384, mufaj: "Életrajz", kiado: "Partvonal", statusz: "Elolvasva", ertekeles: 4, aktualisOldal: 384 },
@@ -36,8 +36,8 @@ function App() {
           <Routes>
               <Route path="/" element={<Home />} />
 
-              {/* Összes könyv oldal → átadjuk a state-et */}
-              <Route path="/osszes" element={<OsszKonyvek konyvek={konyvek} setKonyvek={setKonyvek} />} />
+              {/* Összes könyv oldal → toggle gomb a szerkesztő/információs nézethez */}
+              <Route path="/osszes" element={<OsszesKonyvSzerkesztes konyvek={konyvek} setKonyvek={setKonyvek} />} />
 
               {/* Új könyv felvitel → átadjuk a state-et */}
               <Route path="/ujkonyv" element={<UjKonyvFelvitel konyvek={konyvek} setKonyvek={setKonyvek} />} />
@@ -46,8 +46,8 @@ function App() {
               <Route path="/terv" element={<OlvasasiTerv konyvek={konyvek} setKonyvek={setKonyvek} />} />
               <Route path="/eves" element={<EvesOlvasmanyok konyvek={konyvek} setKonyvek={setKonyvek} />} />
               <Route path="/kivansaglista" element={<Kivansaglista konyvek={konyvek} setKonyvek={setKonyvek} />} />
+              
           </Routes>
-
         </div>
       </main>
     </div>

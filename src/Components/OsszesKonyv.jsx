@@ -2,7 +2,7 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import "./Osszkonyvek.css";
 
-const OsszesKonyv = ({ konyvek, setKonyvek }) => {
+const OsszesKonyv = ({ konyvek, setKonyvek, szerkeszto }) => {
 
   const kezelesOldalValtozas = (id, ujOldal) => {
     setKonyvek((elozo) =>
@@ -48,7 +48,7 @@ const OsszesKonyv = ({ konyvek, setKonyvek }) => {
               <th>Kiadó</th>
               <th>Státusz</th>
               <th>Értékelés</th>
-              <th>Törlés</th>
+              {szerkeszto && <th>Törlés</th>}
             </tr>
           </thead>
           <tbody>
@@ -58,13 +58,8 @@ const OsszesKonyv = ({ konyvek, setKonyvek }) => {
                 <tr key={k.id}>
                   <td>{k.szerzo}</td>
                   <td>{k.cim}</td>
-                  <td>{k.oldalszam}</td>
                   <td>
-                    <div className="haladas-container">
-                      <div className="haladas-felso">
-                        <progress value={haladas} max="100" className="haladas-progress"></progress>
-                        <span className="haladas-szazalek">{haladas}%</span>
-                      </div>
+                    {szerkeszto ? (
                       <input
                         type="number"
                         min="0"
@@ -74,6 +69,16 @@ const OsszesKonyv = ({ konyvek, setKonyvek }) => {
                         className="oldal-input"
                         title="Jelenlegi oldal"
                       />
+                    ) : (
+                      k.oldalszam
+                    )}
+                  </td>
+                  <td>
+                    <div className="haladas-container">
+                      <div className="haladas-felso">
+                        <progress value={haladas} max="100" className="haladas-progress"></progress>
+                        <span className="haladas-szazalek">{haladas}%</span>
+                      </div>
                     </div>
                   </td>
                   <td>{k.mufaj}</td>
@@ -85,18 +90,20 @@ const OsszesKonyv = ({ konyvek, setKonyvek }) => {
                         <span
                           key={n}
                           className={n <= k.ertekeles ? "csillag aktiv" : "csillag"}
-                          onClick={() => k.statusz === "Elolvasva" && kezelesErtekeles(k.id, n)}
+                          onClick={() => szerkeszto && k.statusz === "Elolvasva" && kezelesErtekeles(k.id, n)}
                         >
                           ★
                         </span>
                       ))}
                     </div>
                   </td>
-                  <td>
-                    <button className="delete-gomb" onClick={() => kezelesTorles(k.id)} title="Törlés">
-                      <FaTrash />
-                    </button>
-                  </td>
+                  {szerkeszto && (
+                    <td>
+                      <button className="delete-gomb" onClick={() => kezelesTorles(k.id)} title="Törlés">
+                        <FaTrash />
+                      </button>
+                    </td>
+                  )}
                 </tr>
               );
             })}
