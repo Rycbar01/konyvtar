@@ -1,3 +1,4 @@
+
 /* Táblázat stílus */
 /* Táblázat */
 .konyv-tabla {
@@ -15,7 +16,6 @@
   color: #4CAF50;
   font-weight: bold;
   text-align: left;
-  border-bottom: 1px solid #444;
 }
 
 /* Sorok és hover */
@@ -149,4 +149,23 @@
 }
 .hozzaad-gomb:hover {
   background: #0a5e03;
+}
+.csillag-ertekeles {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.csillag {
+  font-size: 1.2rem;
+  color: #555; /* üres csillag */
+  transition: color 0.2s;
+}
+
+.csillag.aktiv {
+  color: #FFD700; /* arany csillag */
+}
+.konyv-tabla td.csillag-cella {
+  border-bottom: none; /* eltünteti a vonalat */
+  padding: 5px 10px;
 }
