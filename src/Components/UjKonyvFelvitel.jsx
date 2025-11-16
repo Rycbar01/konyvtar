@@ -12,7 +12,7 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
     const [oldalszam, setOldalszam] = useState('');
     const [mufaj, setMufaj] = useState('');
     const [kiado, setKiado] = useState('');
-    const [boritoUrl, setBoritoUrl] = useState('');
+    
     const [statusz, setStatusz] = useState('Olvasásra vár');
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
             oldalszam: parseInt(oldalszam) || 0,
             mufaj: mufaj.trim(),
             kiado: kiado.trim(),
-            boritoUrl: boritoUrl.trim(),
+            
             statusz: statusz,
             aktualisOldal: 0, // új könyv, még nincs olvasva
             ertekeles: 0,
@@ -54,7 +54,7 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
         setOldalszam('');
         setMufaj('');
         setKiado('');
-        setBoritoUrl('');
+        
         setStatusz('Olvasásra vár'); 
 
         alert(`Sikeresen rögzítve: ${ujKonyvAdatok.cim}`);
@@ -111,13 +111,7 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
                         onChange={(e) => setKiado(e.target.value)}
                         className="felvitel-input"
                     />
-                    <input
-                        type="url"
-                        placeholder="Borítókép URL-je (opcionális)"
-                        value={boritoUrl}
-                        onChange={(e) => setBoritoUrl(e.target.value)}
-                        className="felvitel-input"
-                    />
+                    
                 </fieldset>
 
                 <fieldset className="input-group-státusz">
