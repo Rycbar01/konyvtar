@@ -9,6 +9,7 @@
   /* === OLDAL FEJLÉC === */
   .aktualis-konyv-fejlec {
     position: fixed;
+    top: 100px;
     z-index: 1000;
     width: 77%;
     background-color: #191919;
