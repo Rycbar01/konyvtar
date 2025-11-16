@@ -53,11 +53,19 @@
   margin-top: 0;
 }
 
-/* CSILLAG ÉRTÉKELÉS */
+/* CSILLAG ÉRTÉKELÉS CELLÁBAN */
+.csillag-cella {
+  padding: 5px 5px;       /* Cellán belüli tér */
+  overflow: hidden;        /* Ne lógjon ki a cellából */
+  text-align: left;        /* Igazítás, ha kell */
+}
+
 .csillag-ertekeles {
   display: flex;
   gap: 4px;
   cursor: pointer;
+  justify-content: flex-start; /* Csillagok balra rendezve */
+  max-width: 100%;             /* Ne lógjon ki */
 }
 
 .csillag {
@@ -71,6 +79,5 @@
 }
 
 .konyv-tabla td.csillag-cella {
-  border-bottom: none;
   padding: 5px 10px;
 }
