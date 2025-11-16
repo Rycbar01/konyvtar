@@ -7,6 +7,14 @@ const kezdetiKonyvek = [
   { id: 102, cim: "A lány hét névvel", szerzo: "Hyeonseo Lee", oldalszam: 384, mufaj: "Életrajz", kiado: "Partvonal", statusz: "Elolvasva", ertekeles: 4, aktualisOldal: 384 },
   { id: 103, cim: "Szirmokba zárt szavak", szerzo: "Holly Ringland", oldalszam: 448, mufaj: "Szépirodalom", kiado: "General Press", statusz: "Folyamatban", ertekeles: 3, aktualisOldal: 200 },
   { id: 104, cim: "Ónix vihar", szerzo: "Rebecca Yarros", oldalszam: 480, mufaj: "Fantasy", kiado: "Entangled", statusz: "Nem olvasott", ertekeles: 0, aktualisOldal: 0 },
+  { id: 101, cim: "Addie LaRue láthatatlan élete", szerzo: "V.E. Schwab", oldalszam: 560, mufaj: "Fantasy", kiado: "Fumax", statusz: "Elolvasva", ertekeles: 5, aktualisOldal: 560 },
+  { id: 102, cim: "A lány hét névvel", szerzo: "Hyeonseo Lee", oldalszam: 384, mufaj: "Életrajz", kiado: "Partvonal", statusz: "Elolvasva", ertekeles: 4, aktualisOldal: 384 },
+  { id: 103, cim: "Szirmokba zárt szavak", szerzo: "Holly Ringland", oldalszam: 448, mufaj: "Szépirodalom", kiado: "General Press", statusz: "Folyamatban", ertekeles: 3, aktualisOldal: 200 },
+  { id: 104, cim: "Ónix vihar", szerzo: "Rebecca Yarros", oldalszam: 480, mufaj: "Fantasy", kiado: "Entangled", statusz: "Nem olvasott", ertekeles: 0, aktualisOldal: 0 },
+  { id: 101, cim: "Addie LaRue láthatatlan élete", szerzo: "V.E. Schwab", oldalszam: 560, mufaj: "Fantasy", kiado: "Fumax", statusz: "Elolvasva", ertekeles: 5, aktualisOldal: 560 },
+  { id: 102, cim: "A lány hét névvel", szerzo: "Hyeonseo Lee", oldalszam: 384, mufaj: "Életrajz", kiado: "Partvonal", statusz: "Elolvasva", ertekeles: 4, aktualisOldal: 384 },
+  { id: 103, cim: "Szirmokba zárt szavak", szerzo: "Holly Ringland", oldalszam: 448, mufaj: "Szépirodalom", kiado: "General Press", statusz: "Folyamatban", ertekeles: 3, aktualisOldal: 200 },
+  { id: 104, cim: "Ónix vihar", szerzo: "Rebecca Yarros", oldalszam: 480, mufaj: "Fantasy", kiado: "Entangled", statusz: "Nem olvasott", ertekeles: 0, aktualisOldal: 0 },
 ];
 
 const OsszesKonyv = () => {
@@ -95,7 +103,7 @@ const OsszesKonyv = () => {
                       <span
                         key={n}
                         className={n <= k.ertekeles ? "csillag aktiv" : "csillag"}
-                        onClick={() => k.aktualisOldal > 0 && kezelesErtekeles(k.id, n)}
+                        onClick={() => k.statusz === "Elolvasva" && kezelesErtekeles(k.id, n)}
                       >
                         ★
                       </span>

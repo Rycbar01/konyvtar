@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./Osszkonyvek.css";
+import "./AktualisKonyvek.css";
+
 
 const kezdetiAktualis = [
   {
@@ -207,7 +208,7 @@ const AktualisKonyvek = () => {
       </form>
 
       {/* --- TÁBLÁZAT --- */}
-      <table className="konyv-tabla">
+      <table className="aktualis-konyv-tabla">
         <thead>
           <tr>
             <th>Szerző</th>
