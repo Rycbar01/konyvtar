@@ -79,10 +79,35 @@
   transition: background-color 0.2s;
 }
 
-/* Inputok a táblázatban */
-.formatum-select,
-.datum-input,
-.ertekeles-input {
+/* === CSILLAG ÉRTÉKELÉS TÁBLÁZATBAN === */
+
+.csillag-cella {
+  padding: 5px 5px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.csillag-ertekeles {
+  display: flex;
+  gap: 4px;
+  cursor: default;             /* NEM szerkeszthető */
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.csillag {
+  font-size: 1.2rem;
+  color: #555;                 /* Inaktív csillag */
+  transition: color 0.2s;
+}
+
+.csillag.aktiv {
+  color: #FFD700;              /* Aktív (arany) csillag */
+}
+
+
+/* Inputok a táblázatban csak a formátumhoz */
+.formatum-select {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #555;
@@ -90,9 +115,7 @@
   color: #fff;
   font-size: 0.85rem;
 }
-.formatum-select:focus,
-.datum-input:focus,
-.ertekeles-input:focus {
+.formatum-select:focus {
   outline: none;
   border-color: #00d26a;
   box-shadow: 0 0 4px rgba(0, 210, 106, 0.4);

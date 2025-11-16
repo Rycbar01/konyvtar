@@ -128,11 +128,27 @@ const AktualisKonyvek = () => {
 
   const kezelesOldalValtozas = (id, ujOldal) => {
     setKonyvek((elozo) =>
-      elozo.map((k) =>
-        k.id === id ? { ...k, aktualisOldal: Number(ujOldal) } : k
-      )
+      elozo.map((k) => {
+        if (k.id !== id) return k;
+  
+        const ujOldalSzam = Number(ujOldal);
+        const haladas = (ujOldalSzam / k.oldalszam) * 100;
+  
+        // ➤ Ha elérte a 100%-ot → automatikus átrakás
+        if (haladas >= 100) {
+          return {
+            ...k,
+            aktualisOldal: k.oldalszam,
+            statusz: "Elolvasva",
+            datum: new Date().toISOString().split("T")[0], // yyyy-mm-dd
+          };
+        }
+  
+        return { ...k, aktualisOldal: ujOldalSzam };
+      })
     );
   };
+  
 
   // --- KÖNYV HOZZÁADÁS ---
   const kezelesKonyvHozzaadas = (e) => {

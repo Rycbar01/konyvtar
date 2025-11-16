@@ -21,102 +21,10 @@ const EvesOlvasmanyok = () => {
       datum: "2024-03-01",
       ertekeles: 4,
     },
-    {
-      id: 1,
-      szerzo: "V.E. Schwab",
-      cim: "Addie LaRue láthatatlan élete",
-      oldalszam: 560,
-      formatum: "Fizikai",
-      datum: "2024-02-12",
-      ertekeles: 5,
-    },
-    {
-      id: 2,
-      szerzo: "Hyeonseo Lee",
-      cim: "A lány hét névvel",
-      oldalszam: 384,
-      formatum: "PDF",
-      datum: "2024-03-01",
-      ertekeles: 4,
-    },
-    {
-      id: 1,
-      szerzo: "V.E. Schwab",
-      cim: "Addie LaRue láthatatlan élete",
-      oldalszam: 560,
-      formatum: "Fizikai",
-      datum: "2024-02-12",
-      ertekeles: 5,
-    },
-    {
-      id: 2,
-      szerzo: "Hyeonseo Lee",
-      cim: "A lány hét névvel",
-      oldalszam: 384,
-      formatum: "PDF",
-      datum: "2024-03-01",
-      ertekeles: 4,
-    },
-    {
-      id: 1,
-      szerzo: "V.E. Schwab",
-      cim: "Addie LaRue láthatatlan élete",
-      oldalszam: 560,
-      formatum: "Fizikai",
-      datum: "2024-02-12",
-      ertekeles: 5,
-    },
-    {
-      id: 2,
-      szerzo: "Hyeonseo Lee",
-      cim: "A lány hét névvel",
-      oldalszam: 384,
-      formatum: "PDF",
-      datum: "2024-03-01",
-      ertekeles: 4,
-    },
-    {
-      id: 1,
-      szerzo: "V.E. Schwab",
-      cim: "Addie LaRue láthatatlan élete",
-      oldalszam: 560,
-      formatum: "Fizikai",
-      datum: "2024-02-12",
-      ertekeles: 5,
-    },
-    {
-      id: 2,
-      szerzo: "Hyeonseo Lee",
-      cim: "A lány hét névvel",
-      oldalszam: 384,
-      formatum: "PDF",
-      datum: "2024-03-01",
-      ertekeles: 4,
-    },
-    {
-      id: 1,
-      szerzo: "V.E. Schwab",
-      cim: "Addie LaRue láthatatlan élete",
-      oldalszam: 560,
-      formatum: "Fizikai",
-      datum: "2024-02-12",
-      ertekeles: 5,
-    },
-    {
-      id: 2,
-      szerzo: "Hyeonseo Lee",
-      cim: "A lány hét névvel",
-      oldalszam: 384,
-      formatum: "PDF",
-      datum: "2024-03-01",
-      ertekeles: 4,
-    },
   ]);
 
-  // Formátum opciók
   const formatumok = ["Fizikai", "PDF", "Fizikai/PDF", "Kölcsönzött"];
 
-  // Új könyv hozzáadás form state
   const [ujSzerzo, setUjSzerzo] = useState("");
   const [ujCim, setUjCim] = useState("");
   const [ujOldalszam, setUjOldalszam] = useState("");
@@ -124,7 +32,6 @@ const EvesOlvasmanyok = () => {
   const [ujDatum, setUjDatum] = useState("");
   const [ujErtekeles, setUjErtekeles] = useState(0);
 
-  // --- Új könyv hozzáadása ---
   const kezelesKonyvHozzaadas = (e) => {
     e.preventDefault();
     if (!ujSzerzo.trim() || !ujCim.trim() || !ujOldalszam.trim()) return;
@@ -141,7 +48,6 @@ const EvesOlvasmanyok = () => {
 
     setKonyvek([...konyvek, ujKonyv]);
 
-    // Form reset
     setUjSzerzo("");
     setUjCim("");
     setUjOldalszam("");
@@ -150,7 +56,6 @@ const EvesOlvasmanyok = () => {
     setUjErtekeles(0);
   };
 
-  // Értékelés csillagok kirajzolása
   const csillagokKirajzolasa = (db) => "★".repeat(db) + "☆".repeat(5 - db);
 
   return (
@@ -159,7 +64,6 @@ const EvesOlvasmanyok = () => {
         <h2>📆 Éves Olvasmányok</h2>
       </div>
 
-      {/* --- ÚJ KÖNYV FELVITELE FORM --- */}
       <form onSubmit={kezelesKonyvHozzaadas} className="uj-konyv-form-eves">
         <input
           type="text"
@@ -202,12 +106,12 @@ const EvesOlvasmanyok = () => {
           value={ujErtekeles}
           onChange={(e) => setUjErtekeles(e.target.value)}
         />
+
         <button type="submit" className="hozzaad-gomb">
           + Hozzáadás
         </button>
       </form>
 
-      {/* --- TÁBLÁZAT --- */}
       <table className="konyv-tabla">
         <thead>
           <tr>
@@ -226,58 +130,23 @@ const EvesOlvasmanyok = () => {
               <td>{index + 1}</td>
               <td>{k.szerzo}</td>
               <td>{k.cim}</td>
-              <td>
-                <select
-                  value={k.formatum}
-                  onChange={(e) =>
-                    setKonyvek((elozo) =>
-                      elozo.map((k2) =>
-                        k2.id === k.id ? { ...k2, formatum: e.target.value } : k2
-                      )
-                    )
-                  }
-                  className="formatum-select"
-                >
-                  {formatumok.map((f) => (
-                    <option key={f} value={f}>
-                      {f}
-                    </option>
-                  ))}
-                </select>
-              </td>
+
+              {/* NEM szerkeszthető mezők */}
+              <td>{k.formatum}</td>
               <td>{k.oldalszam}</td>
-              <td>
-                <input
-                  type="number"
-                  min="0"
-                  max="5"
-                  value={k.ertekeles}
-                  onChange={(e) =>
-                    setKonyvek((elozo) =>
-                      elozo.map((k2) =>
-                        k2.id === k.id
-                          ? { ...k2, ertekeles: Number(e.target.value) }
-                          : k2
-                      )
-                    )
-                  }
-                  className="ertekeles-input"
-                />
+              <td className="csillag-cella">
+                <div className="csillag-ertekeles">
+                  {[1, 2, 3, 4, 5].map((szam) => (
+                    <span
+                      key={szam}
+                      className={`csillag ${szam <= k.ertekeles ? "aktiv" : ""}`}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
               </td>
-              <td>
-                <input
-                  type="date"
-                  value={k.datum}
-                  onChange={(e) =>
-                    setKonyvek((elozo) =>
-                      elozo.map((k2) =>
-                        k2.id === k.id ? { ...k2, datum: e.target.value } : k2
-                      )
-                    )
-                  }
-                  className="datum-input"
-                />
-              </td>
+              <td>{k.datum}</td>
             </tr>
           ))}
         </tbody>
