@@ -1,8 +1,7 @@
 // src/Components/OlvasasiNaptar.jsx
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import './OlvasasiNaptar.css';
-import Sidebar from './Sidebar';
 
 // Segédfüggvény: Dátum formázása YYYY-MM-DD formátumra
 const formatDate = (date) => {
@@ -12,92 +11,72 @@ const formatDate = (date) => {
     return `${y}-${m}-${d}`;
 };
 
-// Segédfüggvény: Egy adott hónap napjainak és az első nap heti indexének kiszámítása
+// Segédfüggvény: Hónap napjai és első nap indexe
 const getCalendarDays = (year, month) => {
-    // 0 = Vasárnap, 1 = Hétfő, ...
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
     const daysInMonth = lastDay.getDate();
-    
-    // Mivel a hétfővel akarunk kezdeni (EU szabvány):
-    // 0(V) -> 6, 1(H) -> 0, 2(K) -> 1, ...
-    const firstDayIndex = (firstDay.getDay() + 6) % 7; 
-    
+    const firstDayIndex = (firstDay.getDay() + 6) % 7; // hétfővel kezdődik
     return { daysInMonth, firstDayIndex };
 };
 
-
 const OlvasasiNaptar = () => {
-    // State: Az olvasott napok dátumai (YYYY-MM-DD formátumban)
-    const [olvasottNapok, setOlvasottNapok] = useState([
-        '2025-11-01', // Példa adat: ma (2025. nov 1.)
-        '2025-10-28',
-        '2025-10-29',
-        '2025-10-31',
-    ]);
-    
-    // State: Az aktuálisan megjelenített dátum (ezt lehet léptetni)
-    const [currentDate, setCurrentDate] = useState(new Date());
+    // 1️⃣ State: olvasott napok LocalStorage-ból
+    const [olvasottNapok, setOlvasottNapok] = useState(() => {
+        const saved = localStorage.getItem('olvasottNapok');
+        return saved ? JSON.parse(saved) : [];
+    });
 
+    // 2️⃣ State: aktuális hónap
+    const [currentDate, setCurrentDate] = useState(new Date());
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     const currentMonthName = currentDate.toLocaleString('hu-HU', { month: 'long', year: 'numeric' });
 
-    // Memoizált naptár adatok generálása
-    const calendarData = useMemo(() => {
-        return getCalendarDays(year, month);
-    }, [year, month]);
+    // 3️⃣ Memoizált naptár adatok
+    const calendarData = useMemo(() => getCalendarDays(year, month), [year, month]);
 
-    // Kattintáskezelő: hozzáadja vagy eltávolítja a napot a listából
+    // 4️⃣ Kattintás kezelő: olvasott napok jelölése
     const handleDayClick = (dayDateString) => {
         setOlvasottNapok(prev => {
-            if (prev.includes(dayDateString)) {
-                // Már olvastam, töröljük
-                return prev.filter(d => d !== dayDateString);
-            } else {
-                // Még nem olvastam, hozzáadjuk
-                return [...prev, dayDateString].sort();
-            }
+            const newList = prev.includes(dayDateString)
+                ? prev.filter(d => d !== dayDateString)
+                : [...prev, dayDateString].sort();
+            
+            // Mentés LocalStorage-ba
+            localStorage.setItem('olvasottNapok', JSON.stringify(newList));
+            return newList;
         });
     };
 
-    // Navigáció a következő/előző hónapra
-    const handlePrevMonth = () => {
-        setCurrentDate(new Date(year, month - 1, 1));
-    };
-
-    const handleNextMonth = () => {
-        setCurrentDate(new Date(year, month + 1, 1));
-    };
+    // 5️⃣ Hónap navigáció
+    const handlePrevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
+    const handleNextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
 
     const days = [];
     const todayString = formatDate(new Date());
 
-    // 1. Üres cellák a hónap elején (hogy Hétfővel kezdődjön a sor)
+    // 6️⃣ Üres cellák a hónap elején
     for (let i = 0; i < calendarData.firstDayIndex; i++) {
         days.push(<div key={`empty-${i}`} className="naptar-nap ures-nap"></div>);
     }
 
-    // 2. A hónap napjai
+    // 7️⃣ Hónap napjai
     for (let day = 1; day <= calendarData.daysInMonth; day++) {
         const date = new Date(year, month, day);
         const dateString = formatDate(date);
-        
         const isRead = olvasottNapok.includes(dateString);
         const isToday = dateString === todayString;
-        
-        // CSS osztályok beállítása
+        const isClickable = date <= new Date(todayString);
+
         let classes = "naptar-nap";
         if (isRead) classes += " olvasva";
         if (isToday) classes += " ma";
-        
-        // Csak a mai és a múltbeli napokat lehet jelölni
-        const isClickable = date <= new Date(todayString); // Nem lehet jövőbeli napot jelölni
 
         days.push(
-            <div 
+            <div
                 key={dateString}
-                className={classes} 
+                className={classes}
                 onClick={isClickable ? () => handleDayClick(dateString) : null}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
                 title={isClickable ? (isRead ? 'Kijelölés törlése' : 'Olvasva jelölés') : 'Jövőbeli nap'}
@@ -109,18 +88,16 @@ const OlvasasiNaptar = () => {
 
     return (
         <div className="olvasasi-naptar-kontener">
-
             <h2 className="naptar-focim">Olvasási szokáskövetés</h2>
-            
-            {/* Navigációs fejléc */}
+
+            {/* Navigáció */}
             <div className="naptar-fejlec">
                 <button onClick={handlePrevMonth} className="nav-gomb">&lt;</button>
                 <h3>{currentMonthName}</h3>
                 <button onClick={handleNextMonth} className="nav-gomb">&gt;</button>
             </div>
 
-
-            {/* A naptár cellái */}
+            {/* Naptár */}
             <div className="naptar-napok">
                 {days}
             </div>

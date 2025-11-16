@@ -1,10 +1,6 @@
-/* src/Components/Home.css */
-
-
-
 .home-page {
     height: 100vh;
-    overflow: hidden;       /* sem függőleges, sem vízszintes scroll */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -21,9 +17,6 @@
 .home-main-content {
     flex-grow: 1;
     width: 100%;
-    body{
-        overflow: hidden !important;
-    }
 }
 
 h1, h2 {
@@ -33,21 +26,13 @@ h1, h2 {
 /* ---- Gyors statisztikák + Naptár szekció ---- */
 .stats-container {
     display: flex;
-    justify-content: space-between; /* kártyák balra, naptár jobbra */
+    justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
     margin-bottom: 35px;
     padding: 10px;
     width: 100%;
 }
-
-/* Jobb oldali naptár – legyen távolabb a jobb széltől */
-.stats-container > div:last-child {
-    flex: 1;         /* hagyjuk nőni */
-    max-width: 100%; /* <-- 350px helyett engedjük kitölteni */
-    margin-right: 10px; /* felesleges szűkítés eltávolítva */
-}
-
 
 /* Bal oldali statisztikai rács */
 .stat-card-group {
@@ -81,34 +66,9 @@ h1, h2 {
     margin-top: 8px;
 }
 
-.stat-subtext {
-    font-size: 1em;
-    color: #555;
-    margin-top: 4px;
-}
-.stat-card .stat-number {
-    margin: 5px 0;
-}
-
-
-/* Mini könyvlista (pl. Porosodók) */
-.mini-book-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.9em;
-    color: #555;
-}
-
-.mini-book-list li {
-    margin: 4px 0;
-}
-
-/* Jobb oldali naptár konténer */
-.stats-container > .olvasasi-naptar,
-.stats-container > .OlvasasiNaptar,
+/* Jobb oldali naptár */
 .stats-container > div:last-child {
-    flex: 1; /* kisebb, mint a stat kártyák része */
+    flex: 1;
     max-width: 350px;
 }
 
@@ -120,8 +80,6 @@ h1, h2 {
     }
 
     .stat-card-group {
-        grid-template-columns: repeat(2, 1fr); /* 2 oszlop mobilon */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-
-

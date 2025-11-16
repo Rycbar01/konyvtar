@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import './UjKonyvFelvitel.css'; 
 import { FaBookMedical, FaSave } from 'react-icons/fa'; 
 
-const UjKonyvFelvitel = () => {
-    // Állapotok a felviendő adatoknak
+// Most props-ként kapjuk a konyvek listát és a setKonyvek-et
+const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
+    // Lokális state csak az input mezőkhöz
     const [cim, setCim] = useState('');
     const [szerzo, setSzerzo] = useState('');
     const [oldalszam, setOldalszam] = useState('');
@@ -21,7 +22,7 @@ const UjKonyvFelvitel = () => {
         };
     }, []);
     
-    // Kezelő a form elküldéséhez
+    // Form submit
     const handleSubmit = (e) => {
         e.preventDefault();
         
@@ -39,14 +40,15 @@ const UjKonyvFelvitel = () => {
             kiado: kiado.trim(),
             boritoUrl: boritoUrl.trim(),
             statusz: statusz,
+            aktualisOldal: 0, // új könyv, még nincs olvasva
+            ertekeles: 0,
             datum: new Date().toLocaleDateString('hu-HU'),
         };
 
-        console.log('--- Új könyv rögzítve (Backendre küldés helyett) ---');
-        console.log(ujKonyvAdatok);
-        console.log('----------------------------------------------------');
+        // A szülő state-ét frissítjük → mindenhol látszik
+        setKonyvek([...konyvek, ujKonyvAdatok]);
 
-        // Form resetelése
+        // Form reset
         setCim('');
         setSzerzo('');
         setOldalszam('');
@@ -60,14 +62,11 @@ const UjKonyvFelvitel = () => {
 
     return (
         <div className="uj-konyv-container">
-            {/* RÖGZÍTETT FEJLÉC */}
             <div className="felvitel-fejlec">
                 <h2><FaBookMedical /> Új Könyv Felvitele</h2>
             </div>
 
             <form onSubmit={handleSubmit} className="felvitel-form">
-                
-                {/* 1. Kötelező adatok */}
                 <fieldset className="input-group-fokusz">
                     <legend>Alap adatok</legend>
                     <input
@@ -96,7 +95,6 @@ const UjKonyvFelvitel = () => {
                     />
                 </fieldset>
                 
-                {/* 2. Opcionális adatok */}
                 <fieldset className="input-group-opcio">
                     <legend>Kiegészítő adatok</legend>
                     <input
@@ -122,7 +120,6 @@ const UjKonyvFelvitel = () => {
                     />
                 </fieldset>
 
-                {/* 3. Státusz és Mentés */}
                 <fieldset className="input-group-státusz">
                     <legend>Státusz és Mentés</legend>
                     <div className="statusz-select-container">

@@ -1,10 +1,7 @@
-// src/App.jsx
-
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css'; 
 import { Routes, Route } from 'react-router-dom'; 
 
-// Saját komponensek
 import Navbar from './Components/Navbar';
 import OsszKonyvek from './Components/OsszesKonyv'; 
 import Home from './Components/Home'; 
@@ -15,52 +12,44 @@ import OlvasasiTerv from './Components/OlvasasiTerv';
 import Kivansaglista from './Components/Kivansaglista';
 import UjKonyvFelvitel from './Components/UjKonyvFelvitel';
 
-
-
 function App() {
+  // Itt tároljuk az összes könyvet
+  const [konyvek, setKonyvek] = useState([
+    { id: 101, cim: "Addie LaRue láthatatlan élete", szerzo: "V.E. Schwab", oldalszam: 560, mufaj: "Fantasy", kiado: "Fumax", statusz: "Elolvasva", ertekeles: 5, aktualisOldal: 560 },
+    { id: 102, cim: "A lány hét névvel", szerzo: "Hyeonseo Lee", oldalszam: 384, mufaj: "Életrajz", kiado: "Partvonal", statusz: "Elolvasva", ertekeles: 4, aktualisOldal: 384 },
+    { id: 103, cim: "Szirmokba zárt szavak", szerzo: "Holly Ringland", oldalszam: 448, mufaj: "Szépirodalom", kiado: "General Press", statusz: "Folyamatban", ertekeles: 3, aktualisOldal: 200 },
+    { id: 104, cim: "Ónix vihar", szerzo: "Rebecca Yarros", oldalszam: 480, mufaj: "Fantasy", kiado: "Entangled", statusz: "Nem olvasott", ertekeles: 0, aktualisOldal: 0 },
+  ]);
+
   return (
     <div className="App">
-      
-      {/* 1. Navbar - EZ MINDEN OLDALON FENT MARAD */}
       <Navbar /> 
      
       <main className="content-container">
-        
-         {/* Fix cím a Sidebar fölött */}
          <div className="sidebar-header">
-         <h1>📚 My Library</h1>
-       </div>
-                
+           <h1>📚 My Library</h1>
+         </div>
 
         <div className="page-content-wrapper"> 
-        
-        {/* 2. OLDALSÁV - EZ LESZ MINDEN OLDALON */}
-        <Sidebar />
+          <Sidebar />
 
-
-          {/* 2. ROUTES - Ez a rész változik a navigáláskor */}
           <Routes>
-              
-              {/* Útvonal 1: Kezdőlap (/) */}
               <Route path="/" element={<Home />} />
-              
-              {/* Útvonal 2: Összes Könyv (/osszes-konyv) */}
-              
-              
-              {/* JÖVŐBELI ÚTVONALAK (Helyőrzők a Navbar linkjeihez) */}
-              <Route path="/aktualis" element={<AktualisKonyvek />} />
-              <Route path="/osszes" element={<OsszKonyvek />} />
-              <Route path="/terv" element={<OlvasasiTerv />} />
-              <Route path="/eves" element={<EvesOlvasmanyok />} />
-              <Route path="/kivansaglista" element={<Kivansaglista />} />
-              <Route path="/ujkonyv" element={<UjKonyvFelvitel />} />
 
+              {/* Összes könyv oldal → átadjuk a state-et */}
+              <Route path="/osszes" element={<OsszKonyvek konyvek={konyvek} setKonyvek={setKonyvek} />} />
+
+              {/* Új könyv felvitel → átadjuk a state-et */}
+              <Route path="/ujkonyv" element={<UjKonyvFelvitel konyvek={konyvek} setKonyvek={setKonyvek} />} />
+
+              <Route path="/aktualis" element={<AktualisKonyvek konyvek={konyvek} setKonyvek={setKonyvek} />} />
+              <Route path="/terv" element={<OlvasasiTerv konyvek={konyvek} setKonyvek={setKonyvek} />} />
+              <Route path="/eves" element={<EvesOlvasmanyok konyvek={konyvek} setKonyvek={setKonyvek} />} />
+              <Route path="/kivansaglista" element={<Kivansaglista konyvek={konyvek} setKonyvek={setKonyvek} />} />
           </Routes>
 
-          </div> {/* page-content-wrapper vége */}
-
+        </div>
       </main>
-
     </div>
   );
 }
