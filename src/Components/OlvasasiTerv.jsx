@@ -64,7 +64,7 @@ const OlvasasiTerv = () => {
             </div>
 
             {/* Új könyv felvitele */}
-            <form onSubmit={handleAddKonyv} className="uj-konyv-form">
+            <form onSubmit={handleAddKonyv} className="uj-olvasasiterv-form">
                 <input
                     type="text"
                     placeholder="Könyv címe"

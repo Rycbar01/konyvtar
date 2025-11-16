@@ -60,84 +60,83 @@ const Kivansaglista = () => {
 
     return (
         <div className="kivansaglista-container">
-            <div className="lista-fejlec">
-                <h2>⭐ Kívánságlista</h2>
-                <div className="osszegzes">
-                    Még beszerzendő könyvek összértéke: <strong>{osszesAr.toLocaleString('hu-HU')} Ft</strong>
-                </div>
-            </div>
+  <div className="lista-fejlec">
+    <h2>⭐ Kívánságlista</h2>
+    <div className="osszegzes">
+      Még beszerzendő könyvek összértéke: <strong>{osszesAr.toLocaleString('hu-HU')} Ft</strong>
+    </div>
+  </div>
 
-            {/* Új könyv felvitele űrlap */}
-            <form onSubmit={handleAddKonyv} className="uj-konyv-form">
-                <input
-                    type="text"
-                    placeholder="Könyv címe"
-                    value={ujCim}
-                    onChange={(e) => setUjCim(e.target.value)}
-                    className="lista-input"
-                />
-                <input
-                    type="text"
-                    placeholder="Szerző neve"
-                    value={ujSzerzo}
-                    onChange={(e) => setUjSzerzo(e.target.value)}
-                    className="lista-input"
-                />
-                <input
-                    type="number"
-                    placeholder="Ár (Ft)"
-                    value={ujAr}
-                    onChange={(e) => setUjAr(e.target.value)}
-                    className="lista-input ar-input"
-                />
-                <button type="submit" className="lista-gomb add-gomb">
-                    <FaPlus /> Hozzáadás
-                </button>
-            </form>
-            
-            <div className="lista-tartalom">
-                {konyvek.length === 0 ? (
-                    <p className="ures-uzenet">A kívánságlista üres.</p>
-                ) : (
-                    konyvek.map(konyv => (
-                        <div key={konyv.id} className={`lista-item ${konyv.beszerzett ? 'beszerzett' : ''}`}>
-                            
-                            {/* Checkbox / Státusz */}
-                            <label className="checkbox-container">
-                                <input
-                                    type="checkbox"
-                                    checked={konyv.beszerzett}
-                                    onChange={() => handleToggleBeszerzett(konyv.id)}
-                                />
-                                <span className="checkmark">
-                                    {konyv.beszerzett && <FaCheck />}
-                                </span>
-                            </label>
+  {/* Új könyv felvitele form */}
+  <form onSubmit={handleAddKonyv} className="uj-konyv-form-aktualis">
+    <input
+      type="text"
+      placeholder="Könyv címe"
+      value={ujCim}
+      onChange={(e) => setUjCim(e.target.value)}
+      className="lista-input"
+    />
+    <input
+      type="text"
+      placeholder="Szerző neve"
+      value={ujSzerzo}
+      onChange={(e) => setUjSzerzo(e.target.value)}
+      className="lista-input"
+    />
+    <input
+      type="number"
+      placeholder="Ár (Ft)"
+      value={ujAr}
+      onChange={(e) => setUjAr(e.target.value)}
+      className="lista-input ar-input"
+    />
+    <button type="submit" className="lista-gomb add-gomb">
+      <FaPlus /> Hozzáadás
+    </button>
+  </form>
 
-                            {/* Cím és Szerző */}
-                            <div className="konyv-info">
-                                <span className="konyv-cim">{konyv.cim}</span>
-                                <span className="konyv-szerzo">({konyv.szerzo})</span>
-                            </div>
-                            
-                            {/* Ár megjelenítése */}
-                            <div className="ar-display">
-                                {konyv.ar > 0 ? `${konyv.ar.toLocaleString('hu-HU')} Ft` : 'N/A'}
-                            </div>
+  {/* Lista tartalom */}
+  <div className="lista-tartalom">
+    {konyvek.length === 0 ? (
+      <p className="ures-uzenet">A kívánságlista üres.</p>
+    ) : (
+      konyvek.map((konyv) => (
+        <div key={konyv.id} className={`lista-item ${konyv.beszerzett ? 'beszerzett' : ''}`}>
+          {/* Checkbox */}
+          <label className="checkbox-container">
+            <input
+              type="checkbox"
+              checked={konyv.beszerzett}
+              onChange={() => handleToggleBeszerzett(konyv.id)}
+            />
+            <span className="checkmark">{konyv.beszerzett && <FaCheck />}</span>
+          </label>
 
-                            {/* Törlés gomb */}
-                            <button 
-                                onClick={() => handleDeleteKonyv(konyv.id)} 
-                                className="lista-gomb delete-gomb"
-                                title="Törlés a listáról"
-                            >
-                                <FaTrash />
-                            </button>
-                        </div>
-                    ))
-                )}
-            </div>
+          {/* Cím és Szerző */}
+          <div className="konyv-info">
+            <span className="konyv-cim">{konyv.cim}</span>
+            <span className="konyv-szerzo">({konyv.szerzo})</span>
+          </div>
+
+          {/* Ár */}
+          <div className="ar-display">
+            {konyv.ar > 0 ? `${konyv.ar.toLocaleString('hu-HU')} Ft` : 'N/A'}
+          </div>
+
+          {/* Törlés */}
+          <button
+            onClick={() => handleDeleteKonyv(konyv.id)}
+            className="lista-gomb delete-gomb"
+            title="Törlés a listáról"
+          >
+            <FaTrash />
+          </button>
         </div>
+      ))
+    )}
+  </div>
+</div>
+
     );
 };
 

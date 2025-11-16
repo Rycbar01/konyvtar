@@ -21,16 +21,18 @@
     color: #0e7804;
 }
 /* --- ÚJ KÖNYV FORM --- */
-.uj-konyv-form {
+.uj-olvasasiterv-form {
     display: flex;
+    gap: 15px;
     flex-wrap: wrap;
-    gap: 10px;
-    background: #2b2b2b;
+    background-color: #2b2b2b;
     padding: 15px;
     border-radius: 0 0 8px 8px;
     position: sticky;
-    top: 260px;
+    top: 260px; /* fejléc alsó vonalához igazítva */
     z-index: 999;
+    margin-bottom: 30px;
+    width: 100%; /* ugyanolyan szélesség, mint a fejléc */
 }
 
 .terv-input {
