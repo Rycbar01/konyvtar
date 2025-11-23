@@ -23,7 +23,7 @@ const Sidebar = () => {
                     <li><NavLink to="/osszes"className={({ isActive }) => isActive ? "active-link" : ""}>📖 Összes könyv</NavLink></li> 
                     <li><NavLink to="/aktualis"className={({ isActive }) => isActive ? "active-link" : ""}>⏳ Aktuális olvasmányok</NavLink></li> 
                     <li><NavLink to="/eves" className={({ isActive }) => isActive ? "active-link" : ""}>📆 Éves olvasmányok</NavLink></li>
-                    <li><NavLink to="/terv"className={({ isActive }) => isActive ? "active-link" : ""}>📅 Olvasási terv</NavLink></li>
+                    <li><NavLink to="/terv"className={({ isActive }) => isActive ? "active-link" : ""}>💡 Olvasási terv</NavLink></li>
                     <li><NavLink to="/kivansaglista"className={({ isActive }) => isActive ? "active-link" : ""}>⭐ Kívánságlista</NavLink></li>
                 </ul>
             </div>

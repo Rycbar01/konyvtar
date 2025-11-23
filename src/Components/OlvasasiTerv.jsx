@@ -60,7 +60,7 @@ const OlvasasiTerv = () => {
     return (
         <div className="olvasasi-terv-container">
             <div className="terv-fejlec">
-                <h2>📅 Olvasási Terv</h2>
+                <h2>💡 Olvasási Terv</h2>
             </div>
 
             {/* Új könyv felvitele */}
