@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import OlvasasiNaptar from './OlvasasiNaptar';
 import './Home.css';
 
+
+
 const Home = () => {
     const [konyvek, setKonyvek] = useState([]);
     const [betoltve, setBetoltve] = useState(false);
@@ -12,16 +14,18 @@ const Home = () => {
     // API hívás
     // -------------------------
     useEffect(() => {
-        fetch("/api/konyvek")
-            .then(res => res.json())
-            .then(data => {
-                setKonyvek(data);
-                setBetoltve(true);
-            })
-            .catch(err => {
-                console.error("Hiba a könyvek betöltésekor:", err);
-                setBetoltve(true);
-            });
+        fetch("http://localhost:3000/api/konyvek") // teljes URL a Node.js backendhez
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Frontend kapta:", data); // itt látszik a böngésző konzoljában
+            setKonyvek(data);
+            setBetoltve(true);
+          })
+          .catch((err) => {
+            console.error("Hiba a könyvek betöltésekor:", err);
+            setBetoltve(true);
+          });
+      
 
         // Home scroll tiltás
         window.scrollTo(0, 0);
