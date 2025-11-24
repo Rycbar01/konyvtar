@@ -2,19 +2,51 @@
 
 import React, { useState, useEffect } from 'react';
 import './UjKonyvFelvitel.css'; 
-import { FaBookMedical, FaSave } from 'react-icons/fa'; 
+import { FaBookMedical, FaSave, FaPlusSquare } from 'react-icons/fa'; 
 
-// Most props-ként kapjuk a konyvek listát és a setKonyvek-et
+// Kezdő műfajok listája
+const KEZDETI_MUFAJOK = [
+    'Fantasy', 'Sci-fi', 'Thriller', 'Szépirodalom', 'Életrajz', 'Történelmi'
+];
+
 const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
-    // Lokális state csak az input mezőkhöz
+    // Űrlap adataihoz tartozó State-ek
     const [cim, setCim] = useState('');
     const [szerzo, setSzerzo] = useState('');
     const [oldalszam, setOldalszam] = useState('');
-    const [mufaj, setMufaj] = useState('');
     const [kiado, setKiado] = useState('');
-    
+    const [mufaj, setMufaj] = useState(''); 
     const [statusz, setStatusz] = useState('Olvasásra vár');
 
+    // Műfajkezelő State-ek
+    // 🟢 MUFAJOK LISTÁJA: Ezt bővítjük!
+    const [muFajokListaja, setMuFajokListaja] = useState(KEZDETI_MUFAJOK);
+    // Állapot, ami jelzi, hogy új műfaj felvitele módban vagyunk
+    const [isAddingNewMufaj, setIsAddingNewMufaj] = useState(false);
+    const [newMufajInput, setNewMufajInput] = useState('');
+
+    // Validációs állapot
+    const [isFormValid, setIsFormValid] = useState(false); 
+
+
+    // -------------------------
+    // VALIDÁCIÓ (isFormValid)
+    // -------------------------
+    useEffect(() => {
+        // A Mentés gomb csak akkor aktív, ha minden kötelező mező ki van töltve (beleértve a kiválasztott műfajt is)
+        const isValid = 
+            cim.trim() !== '' &&
+            szerzo.trim() !== '' &&
+            oldalszam !== '' && 
+            mufaj.trim() !== '' && // A műfaj drop-downnak van érvényes értéke
+            kiado.trim() !== '';
+
+        setIsFormValid(isValid);
+    }, [cim, szerzo, oldalszam, kiado, mufaj]); 
+    
+    // -------------------------
+    // SCROLL TILTÁS
+    // -------------------------
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
@@ -22,13 +54,50 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
         };
     }, []);
     
-    // Form submit
+    // -------------------------
+    // ÚJ MŰFAJ FUNKCIÓK
+    // -------------------------
+    const handleAddNewMufaj = () => {
+        // Átváltunk a beviteli mezőre
+        setIsAddingNewMufaj(true);
+        // Töröljük a jelenleg kiválasztott műfajt
+        setMufaj(''); 
+    };
+
+    const handleSaveNewMufaj = () => {
+        const trimmedMufaj = newMufajInput.trim();
+        
+        if (!trimmedMufaj) {
+            // Ha üresen mentené, kilépünk és visszaállunk a select-re
+            setIsAddingNewMufaj(false);
+            setNewMufajInput('');
+            return;
+        }
+
+        let finalMufaj = trimmedMufaj;
+
+        if (!muFajokListaja.includes(trimmedMufaj)) {
+            // 🟢 MUFAJ HOZZÁADÁSA: Frissítjük a listát, ami a drop-down-t tölti
+            setMuFajokListaja(prevList => [...prevList, trimmedMufaj]);
+        }
+        
+        // Beállítjuk az újonnan felvitt/kiválasztott műfajt
+        setMufaj(finalMufaj); 
+        
+        // Visszaállítjuk az állapotot a select mezőre
+        setIsAddingNewMufaj(false);
+        setNewMufajInput('');
+    };
+
+    // -------------------------
+    // FORM SUBMIT
+    // -------------------------
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        if (!cim || !szerzo || !oldalszam) {
-            alert("A cím, szerző és oldalszám mezők kitöltése kötelező!");
-            return;
+        if (!isFormValid) {
+             console.error("Hiba: Az űrlap el lett küldve, pedig inaktívnak kellett volna lennie!");
+             return; 
         }
 
         const ujKonyvAdatok = {
@@ -36,30 +105,32 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
             cim: cim.trim(),
             szerzo: szerzo.trim(),
             oldalszam: parseInt(oldalszam) || 0,
-            mufaj: mufaj.trim(),
-            kiado: kiado.trim(),
+            mufaj: mufaj,
+            kiado: kiado.trim(), 
             
             statusz: statusz,
-            aktualisOldal: 0, // új könyv, még nincs olvasva
+            aktualisOldal: 0, 
             ertekeles: 0,
             datum: new Date().toLocaleDateString('hu-HU'),
         };
 
-        // A szülő state-ét frissítjük → mindenhol látszik
+        // Mentés logikája
         setKonyvek([...konyvek, ujKonyvAdatok]);
 
         // Form reset
         setCim('');
         setSzerzo('');
         setOldalszam('');
-        setMufaj('');
+        setMufaj(''); 
         setKiado('');
-        
         setStatusz('Olvasásra vár'); 
 
         alert(`Sikeresen rögzítve: ${ujKonyvAdatok.cim}`);
     };
 
+    // -------------------------
+    // MEGJELENÍTÉS
+    // -------------------------
     return (
         <div className="uj-konyv-container">
             <div className="felvitel-fejlec">
@@ -97,21 +168,51 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
                 
                 <fieldset className="input-group-opcio">
                     <legend>Kiegészítő adatok</legend>
-                    <input
-                        type="text"
-                        placeholder="Műfaj (pl. Fantasy, Életrajz)"
-                        value={mufaj}
-                        onChange={(e) => setMufaj(e.target.value)}
-                        className="felvitel-input"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Kiadó"
-                        value={kiado}
-                        onChange={(e) => setKiado(e.target.value)}
-                        className="felvitel-input"
-                    />
                     
+                    {/* Műfaj drop-down és Kiadó input egymás mellett */}
+                    <div className="felvitel-input-pair">
+                        {isAddingNewMufaj ? (
+                            // Új műfaj input és Mentés gomb
+                            <div className="new-mufaj-input-group">
+                                <input
+                                    type="text"
+                                    placeholder="Írd be az új műfajt"
+                                    value={newMufajInput}
+                                    onChange={(e) => setNewMufajInput(e.target.value)}
+                                    className="felvitel-input"
+                                    required
+                                />
+                                <button type="button" onClick={handleSaveNewMufaj} className="felvitel-gomb new-mufaj-gomb">
+                                    <FaSave /> Mentés
+                                </button>
+                            </div>
+                        ) : (
+                            // Műfaj select
+                            <select
+                                id="mufaj"
+                                value={mufaj}
+                                onChange={(e) => setMufaj(e.target.value)}
+                                className="felvitel-select mufaj-select"
+                                required
+                            >
+                                <option value="" disabled>-- Válassz műfajt --</option> 
+                                {/* 🟢 MUFAJOK LISTÁJA: Dinamikusan generálódik */}
+                                {muFajokListaja.map(m => (
+                                    <option key={m} value={m}>{m}</option>
+                                ))}
+                            </select>
+                        )}
+                        
+                        {/* Kiadó input (mindig látható) */}
+                        <input
+                            type="text"
+                            placeholder="Kiadó"
+                            value={kiado}
+                            onChange={(e) => setKiado(e.target.value)}
+                            className="felvitel-input"
+                            required
+                        />
+                    </div>
                 </fieldset>
 
                 <fieldset className="input-group-státusz">
@@ -127,13 +228,27 @@ const UjKonyvFelvitel = ({ konyvek, setKonyvek }) => {
                             <option value="Olvasásra vár">Olvasásra vár</option>
                             <option value="Folyamatban">Folyamatban</option>
                             <option value="Elolvasva">Elolvasva</option>
-                            <option value="Meg nem">Meg nem</option>
+                            <option value="Meg nem">Még nem</option>
                         </select>
                     </div>
 
-                    <button type="submit" className="felvitel-gomb save-gomb">
-                        <FaSave /> Könyv Mentése
-                    </button>
+                    {/* Új műfaj gomb a Mentés gomb BAL oldalán */}
+                    <div className="save-button-group">
+                        {/* A gomb csak akkor jelenik meg, ha NEM vagyunk az új műfaj felvitele módban */}
+                        {!isAddingNewMufaj && (
+                            <button type="button" onClick={handleAddNewMufaj} className="felvitel-gomb add-mufaj-gomb">
+                                <FaPlusSquare /> Új Műfaj
+                            </button>
+                        )}
+                        <button 
+                            type="submit" 
+                            className="felvitel-gomb save-gomb"
+                            // Letiltva, ha a form nem érvényes VAGY ha épp új műfajt viszünk fel
+                            disabled={!isFormValid || isAddingNewMufaj} 
+                        >
+                            <FaSave /> Könyv Mentése
+                        </button>
+                    </div>
                 </fieldset>
             </form>
         </div>

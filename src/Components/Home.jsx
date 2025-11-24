@@ -1,31 +1,45 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // 🟢 ÚJ IMPORT: a navigációhoz
 import OlvasasiNaptar from './OlvasasiNaptar';
 import './Home.css';
 
 
+// 🟢 MÓDOSÍTÁS: Fogadja a setIsLoggedIn prop-ot
+const Home = ({ setIsLoggedIn }) => {
 
-const Home = () => {
+    const navigate = useNavigate(); 
+
     const [konyvek, setKonyvek] = useState([]);
     const [betoltve, setBetoltve] = useState(false);
     const aktualisEv = new Date().getFullYear();
     const aktualisHonap = new Date().getMonth() + 1;
 
     // -------------------------
+    // KILÉPÉS FUNKCIÓ
+    // -------------------------
+    const handleLogout = () => {
+        // 1. Állapot visszaállítása (kijelentkezés)
+        setIsLoggedIn(false);
+        // 2. Navigálás a bejelentkezési oldalra
+        navigate('/login', { replace: true });
+    };
+
+    // -------------------------
     // API hívás
     // -------------------------
     useEffect(() => {
         fetch("http://localhost:3000/api/konyvek") // teljes URL a Node.js backendhez
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("Frontend kapta:", data); // itt látszik a böngésző konzoljában
-            setKonyvek(data);
-            setBetoltve(true);
-          })
-          .catch((err) => {
-            console.error("Hiba a könyvek betöltésekor:", err);
-            setBetoltve(true);
-          });
-      
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Frontend kapta:", data); // itt látszik a böngésző konzoljában
+                setKonyvek(data);
+                setBetoltve(true);
+            })
+            .catch((err) => {
+                console.error("Hiba a könyvek betöltésekor:", err);
+                setBetoltve(true);
+            });
+
 
         // Home scroll tiltás
         window.scrollTo(0, 0);
@@ -82,6 +96,13 @@ const Home = () => {
     // -------------------------
     return (
         <div className="home-page home-layout-container">
+
+            <div className="logout-button-container">
+                <button onClick={handleLogout} className="logout-button">
+                    Kijelentkezés ⏻
+                </button>
+            </div>
+
             <div className="home-main-content">
                 <h2 className="gyors-statisztikak-cim">Gyors statisztikák</h2>
 

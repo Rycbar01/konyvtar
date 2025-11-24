@@ -114,13 +114,70 @@ legend {
     align-items: center;
     gap: 10px;
 }
-
 .save-gomb {
     background-color: #0e7804; 
     color: white;
     font-size: 1.1em;
 }
-
 .save-gomb:hover {
     background-color: #0a5c03;
 }
+.save-gomb:disabled {
+    background-color: #6a6a6a;
+    cursor: not-allowed; 
+    opacity: 0.7; 
+    box-shadow: none; 
+}
+
+.felvitel-input-pair {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.felvitel-input-pair .felvitel-select,
+.felvitel-input-pair .felvitel-input {
+    flex: 1;
+}
+
+.new-mufaj-input-group {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+}
+
+.new-mufaj-input-group .felvitel-input {
+    flex-grow: 1;
+}
+
+/* ---------------------------------------------------- */
+/* GOMB CSOPORTOSÍTÁS (Új Műfaj és Mentés) */
+/* ---------------------------------------------------- */
+.save-button-group {
+    display: flex;
+    gap: 30px; /* Távolság az Új Műfaj és a Mentés gomb között */
+    align-items: center;
+    justify-content: flex-end; 
+    margin-top: -70px;
+    width: 100%;
+}
+
+/* Az Új Műfaj gomb stílusa */
+.add-mufaj-gomb {
+    background-color: #0d47a1; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; 
+    transition: background-color 0.3s;
+}
+
+.add-mufaj-gomb:hover {
+    background-color: #1565c0;
+}
+
+/* A select mező és a többi input stílusát szükség esetén igazítsd a .felvitel-input-pair-hez. */
+
+/* ... (Meglévő stílusok: .save-gomb:disabled, stb.) ... */
