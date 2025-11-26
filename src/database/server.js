@@ -8,7 +8,7 @@ app.use(cors()); // engedélyezzük a React fetch-et
 // Adatbázis csatlakozás
 async function dbcsatlakozas() {
   try {
-    const conn = await mysql.createConnection({
+    const conn = await mysql.createConnection({ 
       host: "localhost",
       user: "root",          // phpMyAdmin felhasználó
       password: "",          // ha nincs jelszó, üres string

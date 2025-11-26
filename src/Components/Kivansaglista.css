@@ -1,18 +1,97 @@
-/* Általános konténer és szöveg szín */
-.kivansaglista-container {
-    color: #e0e0e0; 
+/* src/Components/Kivansaglista.css */
+
+/* --- GLOBÁLIS ELRENDEZÉS A CHART ÉS A LISTA KONTÉNERÉHEZ (HOZZÁADVA) --- */
+.page-container {
+    display: flex; 
+    gap: 20px;
     padding: 20px;
+    background-color: #191919; 
+    align-items: flex-start; 
 }
 
-/* --- FEJLÉC RÖGZÍTÉSE --- */
+/* --- KÍVÁNSÁGLISTA KONTÉNER (BAL OLDAL) --- */
+.kivansaglista-container {
+    /* Az eredeti logikához szükséges fix szélesség */
+    width: 100%; 
+    flex-shrink: 0;
+    color: #e0e0e0; 
+    /* Az eredeti padding: 20px; most a page-container-ben van */
+}
+
+/* --- CHART OLDALSÓ KONTÉNER (JOBB OLDAL - HOZZÁADVA) --- */
+.chart-oldal-kontener {
+    width: 300px; 
+    flex-shrink: 0; 
+    position: fixed; 
+    top: 270px; 
+    right: 300px;
+}
+
+/* FIX: Szín hozzáadása az Összes könyv felirathoz */
+.chart-adatok-box p {
+    font-size: 0.95em;
+    color: #cccccc; /* Világosszürke szín a feliratnak */
+    margin-top: 0;
+    margin-bottom: 15px; /* Alapértelmezett p margó beállítása */
+}
+
+.chart-adatok-box,
+.chart-box {
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.chart-adatok-box h3 {
+    color: #0e7804;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: #e0e0e0;
+}
+
+.stat-row strong {
+    color: #4CAF50;
+}
+
+.chart-adatok-box hr {
+    border: 0;
+    height: 1px;
+    background-color: #333;
+    margin: 15px 0;
+}
+/* ------------------------------------------------------------- */
+
+
+/* Általános konténer és szöveg szín */
+/* Ezt a szabályt a page-container-be mozgattuk, de meghagyjuk, ha máshol is hivatkozva van.
+.kivansaglista-container {
+    color: #e0e0e0; 
+    padding: 20px;
+}
+*/
+
+/* --- FEJLÉC RÖGZÍTÉSE (VISSZAÁLLÍTVA) --- */
 .lista-fejlec {
+    /* VISSZAÁLLÍTVA: position: fixed-re az eredeti funkcionalitás miatt */
     position: fixed;
-    top: 200px;      
+    top: 200px; 
     z-index: 1000;
     background-color: #191919; 
     padding: 10px 10px;
     border-bottom: 2px solid #333;
-    width: 77%; /* igazítás a formhoz */
+    /* VISSZAÁLLÍTVA: Az eredeti kód width: 77%-a */
+    width: 77%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +113,7 @@
     font-weight: bold;
 }
 
-/* --- Űrlap stílusok (Felvitel) --- */
+/* --- Űrlap stílusok (Felvitel) (VISSZAÁLLÍTVA) --- */
 .uj-konyv-form {
     display: flex;
     gap: 15px;
@@ -43,10 +122,10 @@
     padding: 15px;
     border-radius: 0 0 8px 8px;
     position: sticky;
-    top: 260px; /* fejléc alsó vonalához igazítva */
+    top: 260px; 
     z-index: 999;
     margin-bottom: 30px;
-    width: 100%; /* ugyanolyan szélesség, mint a fejléc */
+    width: 100%; 
 }
 
 .lista-input {
@@ -91,7 +170,7 @@
 
 /* --- Lista Elemek Stílusai --- */
 .lista-tartalom {
-    padding-top: 35px; /* kisebb tér a lista és a fejléc/form között */
+    padding-top: 35px; 
 }
 
 .lista-item {
@@ -133,7 +212,7 @@
     margin-right: 30px; 
     font-size: 1em;
     font-weight: 500;
-    color: #FFD700;
+    color: #edca00;
     min-width: 120px; 
     text-align: right;
 }
